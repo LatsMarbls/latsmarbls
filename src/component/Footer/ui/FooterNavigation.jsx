@@ -1,32 +1,28 @@
 import React from "react";
 
+const items = [
+  { id: "home", label: "Home" },
+  { id: "skills", label: "Skills" },
+  { id: "practice", label: "Practice" },
+  { id: "experience", label: "Experience" },
+  { id: "projects", label: "Projects" },
+  { id: "contact", label: "Contact" },
+];
+
 const FooterNavigation = ({ scrollToSection }) => {
   return (
-    <ul className="flex items-center justify-center gap-5 text-white transition-all">
-      <li
-        onClick={() => scrollToSection("home")}
-        className="px-3 flex items-center cursor-pointer hover:transform hover:scale-105 2xl:hover:scale-105 hover:text-highlight transition duration-300 ease-in-out"
-      >
-        Home
-      </li>
-      <li
-        onClick={() => scrollToSection("skills")}
-        className="px-3 flex items-center cursor-pointer hover:transform hover:scale-105 2xl:hover:scale-105 hover:text-highlight transition duration-300 ease-in-out"
-      >
-        Skills
-      </li>
-      <li
-        onClick={() => scrollToSection("contact")}
-        className="px-3 flex items-center cursor-pointer hover:transform hover:scale-105 2xl:hover:scale-105 hover:text-highlight transition duration-300 ease-in-out"
-      >
-        Contact
-      </li>
-      <li
-        onClick={() => scrollToSection("projects")}
-        className="px-3 flex items-center cursor-pointer hover:transform hover:scale-105 2xl:hover:scale-105 hover:text-highlight transition duration-300 ease-in-out"
-      >
-        Projects
-      </li>
+    <ul className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+      {items.map((item) => (
+        <li key={item.id}>
+          <button
+            type="button"
+            onClick={() => scrollToSection(item.id)}
+            className="font-mono text-2xs uppercase tracking-[0.14em] text-white/60 transition-colors duration-200 hover:text-white"
+          >
+            {item.label}
+          </button>
+        </li>
+      ))}
     </ul>
   );
 };

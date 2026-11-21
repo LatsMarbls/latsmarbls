@@ -3,7 +3,7 @@ export const projectsData = [
     title: "Login Auth",
     image: "/mernAuth.jpg",
     description:
-      "A fully functional authentication system built using the MERN stack with secure features such as email verification and password reset via a 6-digit OTP. react, node, express,tailwind css, mongodb",
+      "A fully functional authentication system built on the MERN stack, with email verification and password reset through a 6-digit OTP.",
     githubLink: "https://github.com/Havennnn/mern-auth",
     liveLink: "https://login-auth-by4k.vercel.app",
     technologies: [

@@ -1,8 +1,8 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Navbar from "../Navbar";
 import HeroContent from "./ui/HeroContent";
-import Hero from "./ui/Hero";
-import SocialLinks from "./ui/SocialLinks";
+import HeroTerminal from "./ui/HeroTerminal";
 import ContactModal from "../layouts/forms/ContactModal";
 import useContactForm from "./hooks/useContactForm";
 import useResume from "./hooks/useResume";
@@ -12,46 +12,30 @@ const Home = () => {
     useContactForm();
   const handleDownloadCV = useResume();
 
-  const pageVariants = {
-    initial: {
-      opacity: 0,
-    },
-    animate: {
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeInOut",
-      },
-    },
-    exit: {
-      opacity: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  };
-
   return (
     <AnimatePresence mode="wait">
       <motion.section
         key="home-section"
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        variants={pageVariants}
-        className="h-[700px] xl:h-[93vh] bg-white transition-all duration-500 ease-in-out rounded-tl-[1.5rem] rounded-br-[1.5rem]"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+        className="relative overflow-hidden rounded-[24px] border border-line bg-white"
       >
-        <div className="relative flex h-full">
+        <Navbar />
+        <div className="relative flex flex-col justify-center gap-12 px-6 pb-12 pt-28 sm:px-10 md:flex-row md:items-center md:gap-8 md:px-12 md:pb-16 md:pt-24 xl:min-h-[84vh] xl:px-16">
           <HeroContent handleDownloadCV={handleDownloadCV} />
-          <SocialLinks openModal={openModal} />
-          <ContactModal
-            showModal={showModal}
-            closeModal={closeModal}
-            status={status}
-            onSubmit={onSubmit}
-          />
-          <Hero />
+          <div className="flex flex-1 justify-center md:justify-end">
+            <HeroTerminal />
+          </div>
         </div>
+
+        <ContactModal
+          showModal={showModal}
+          closeModal={closeModal}
+          status={status}
+          onSubmit={onSubmit}
+        />
       </motion.section>
     </AnimatePresence>
   );

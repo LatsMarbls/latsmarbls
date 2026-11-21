@@ -1,159 +1,70 @@
-import React from "react";
-import { useRef, useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
+
+const items = [
+  { id: "home", label: "Home" },
+  { id: "skills", label: "Skills" },
+  { id: "practice", label: "Practice" },
+  { id: "experience", label: "Experience" },
+  { id: "projects", label: "Projects" },
+  { id: "contact", label: "Contact" },
+];
 
 const MobileMenu = ({ isMenuOpen, scrollToSection }) => {
   const menuRef = useRef(null);
 
   useEffect(() => {
-    if (menuRef.current) {
-      if (isMenuOpen) {
-        gsap.to(menuRef.current, {
-          x: 0,
-          duration: 0.5,
-          ease: "power4.out",
-        });
-      } else {
-        gsap.to(menuRef.current, {
-          x: "160%",
-          duration: 0.2,
-          ease: "power4.in",
-        });
-      }
-    }
+    if (!menuRef.current) return;
+
+    gsap.to(menuRef.current, {
+      x: isMenuOpen ? 0 : "120%",
+      duration: isMenuOpen ? 0.4 : 0.2,
+      ease: isMenuOpen ? "power3.out" : "power3.in",
+    });
   }, [isMenuOpen]);
-
-  const logoVariants = {
-    hidden: { opacity: 0, scale: 0.8, rotate: -5 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      rotate: 0,
-      transition: {
-        type: "spring",
-        stiffness: 260,
-        damping: 20,
-        delay: 0.1,
-      },
-    },
-    hover: {
-      scale: 1.1,
-      rotate: 5,
-      transition: {
-        type: "spring",
-        stiffness: 300,
-        damping: 10,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, x: 20 },
-    visible: (custom) => ({
-      opacity: 1,
-      x: 0,
-      transition: {
-        type: "spring",
-        stiffness: 300,
-        damping: 24,
-        delay: 0.3 + custom * 0.1,
-      },
-    }),
-    tap: { scale: 0.95 },
-  };
 
   return (
     <div
       ref={menuRef}
-      style={{ transform: "translateX(100%)" }}
-      className="bg-dgray text-white px-2 absolute rounded-bl-[1rem] right-0 mr-[-1px] top-[55px] z-20 transition-all duration-500 ease-in-out block lg:hidden element8"
+      style={{ transform: "translateX(120%)" }}
+      className="absolute right-4 top-16 z-30 w-[210px] border border-line bg-white p-2 shadow-[0_20px_60px_-24px_rgba(17,17,16,0.35)] lg:hidden"
     >
       <AnimatePresence>
         {isMenuOpen && (
           <motion.ul
-            className="flex flex-col pt-2 pb-5 gap-5"
+            className="flex flex-col"
             initial="hidden"
             animate="visible"
             exit="hidden"
           >
-            <motion.li
-              custom={0}
-              variants={itemVariants}
-              whileTap="tap"
-              className="flex text-white justify-around items-center transition ease-in-out duration-300"
-              onClick={() => scrollToSection("home")}
-            >
-              <motion.i
-                whileHover={{ scale: 1.2 }}
-                className="fa-solid fa-house text-xl text-white"
-              />
-            </motion.li>
-
-            <motion.li
-              custom={1}
-              variants={itemVariants}
-              whileTap="tap"
-              className="flex text-white justify-around items-center transition ease-in-out duration-300"
-              onClick={() => scrollToSection("skills")}
-            >
-              <motion.i
-                whileHover={{ scale: 1.2 }}
-                className="fa-solid fa-code text-xl text-white"
-              />
-            </motion.li>
-
-            <motion.li
-              custom={3}
-              variants={itemVariants}
-              whileTap="tap"
-              className="flex text-white justify-around items-center transition ease-in-out duration-300"
-              onClick={() => scrollToSection("education")}
-            >
-              <motion.i
-                whileHover={{ scale: 1.2 }}
-                className="fa-solid fa-graduation-cap text-xl text-white"
-              />
-            </motion.li>
-
-            <motion.li
-              custom={2}
-              variants={itemVariants}
-              whileTap="tap"
-              className="flex text-white justify-around items-center transition ease-in-out duration-300"
-              onClick={() => scrollToSection("experience")}
-            >
-              <motion.i
-                whileHover={{ scale: 1.2 }}
-                className="fa-solid fa-briefcase text-xl text-white"
-              />
-            </motion.li>
-
-            <motion.li
-              custom={4}
-              variants={itemVariants}
-              whileTap="tap"
-              className="flex gap-2 text-white justify-around items-center hover:cursor-pointer transition ease-in-out duration-300"
-              onClick={() => scrollToSection("contact")}
-            >
-              <motion.i
-                whileHover={{ scale: 1.2 }}
-                className="fa-solid fa-phone text-xl text-white"
-              />
-            </motion.li>
-
-            <motion.li
-              custom={5}
-              variants={itemVariants}
-              whileTap="tap"
-              className="flex gap-2 text-white justify-around items-center transition ease-in-out duration-300"
-              onClick={() => scrollToSection("projects")}
-            >
-              <motion.i
-                whileHover={{ scale: 1.2 }}
-                className="fa-solid fa-folder text-xl text-white"
-              />
-            </motion.li>
+            {items.map((item, index) => (
+              <motion.li
+                key={item.id}
+                custom={index}
+                variants={{
+                  hidden: { opacity: 0, x: 12 },
+                  visible: {
+                    opacity: 1,
+                    x: 0,
+                    transition: { duration: 0.2, delay: 0.15 + index * 0.04 },
+                  },
+                }}
+              >
+                <button
+                  type="button"
+                  onClick={() => scrollToSection(item.id)}
+                  className="flex w-full items-baseline gap-3 border-b border-line/70 px-2 py-3 text-left last:border-0"
+                >
+                  <span className="font-mono text-[10px] text-ink/35">
+                    0{items.indexOf(item) + 1}
+                  </span>
+                  <span className="font-display text-[13px] font-semibold uppercase tracking-[0.12em] text-ink">
+                    {item.label}
+                  </span>
+                </button>
+              </motion.li>
+            ))}
           </motion.ul>
         )}
       </AnimatePresence>

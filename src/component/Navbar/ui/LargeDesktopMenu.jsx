@@ -18,12 +18,12 @@ const LargeDesktopMenu = ({ scrollToSection }) => {
       },
     },
     hover: {
-      scale: 1.1,
-      rotate: 5,
+      scale: 1.04,
+      rotate: 0,
       transition: {
         type: "spring",
         stiffness: 300,
-        damping: 10,
+        damping: 18,
       },
     },
   };
@@ -90,39 +90,39 @@ const LargeDesktopMenu = ({ scrollToSection }) => {
   const navItems = [
     { id: "home", icon: "fa-house", label: "Home", active: true },
     { id: "skills", icon: "fa-code", label: "Skills" },
-    { id: "education", icon: "fa-graduation-cap", label: "Education" },
+    { id: "practice", icon: "fa-shield-halved", label: "Practice" },
     { id: "experience", icon: "fa-briefcase", label: "Experience" },
-    { id: "contact", icon: "fa-id-badge", label: "Contact" },
     { id: "projects", icon: "fa-folder", label: "Projects" },
+    { id: "contact", icon: "fa-paper-plane", label: "Contact" },
   ];
 
   return (
     <div className="absolute left-0 right-0 z-10 justify-between items-center gap-2 hidden 2xl:flex">
       <div className="flex">
-        <motion.h1
+        <motion.div
           initial="hidden"
           animate="visible"
           variants={textVariants}
-          className="px-24 text-shadow flex justify-center items-center gap-3"
+          className="px-16 text-shadow flex items-center gap-3"
         >
           <motion.img
             src="/LogoFilled.svg"
             alt="logoFilled"
-            className="h-12 w-12"
+            className="h-7 w-7"
             variants={logoVariants}
             initial="hidden"
             animate="visible"
             whileHover="hover"
           />
-          <p className="font-semibold text-4xl text-dgray">
+          <p className="font-display text-[24px] font-bold leading-none tracking-[-0.025em] text-dgray">
             Lats
-            <span className="font-semibold text-5xl text-gray">Marbls</span>
+            <span className="text-gray-500">Marbls</span>
           </p>
-        </motion.h1>
+        </motion.div>
       </div>
-      <div className="flex pl-5 pt-5 pb-6 rounded-bl-[2rem] bg-dgray elementxl">
-        <div className="element2xl">
-          <ul className="flex gap-5 duration-500">
+      <div className="flex pl-4 py-4 bg-dgray rounded-bl-[1.5rem] nav-union">
+        <div>
+          <ul className="flex gap-2.5 duration-500">
             {navItems.map((item, index) => (
               <motion.li
                 key={item.id}
@@ -137,9 +137,11 @@ const LargeDesktopMenu = ({ scrollToSection }) => {
                 className={`flex ${
                   item.active
                     ? "text-white bg-white"
-                    : "border-4 text-white border-white"
-                } hover:cursor-pointer py-2 px-8 rounded-2xl justify-center items-center text-2xl transition ease-in-out duration-500 group overflow-hidden h-14`}
+                    : "border-2 text-white border-white"
+                } hover:cursor-pointer px-5 rounded-[12px] justify-center items-center text-sm transition ease-in-out duration-500 group overflow-hidden h-11`}
                 onClick={() => item.id !== "home" && scrollToSection(item.id)}
+                aria-label={item.label}
+                title={item.label}
               >
                 <div className="flex items-center h-full">
                   <i

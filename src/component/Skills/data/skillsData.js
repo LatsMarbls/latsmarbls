@@ -1,39 +1,7 @@
 export const skillsData = [
   {
-    name: "HTML",
-    icon: "devicon-html5-plain",
-    category: "Frontend",
-  },
-  {
-    name: "CSS",
-    icon: "devicon-css3-plain",
-    category: "Frontend",
-  },
-  {
-    name: "Tailwind CSS",
-    icon: "devicon-tailwindcss-plain",
-    category: "Frontend",
-  },
-  {
-    name: "JavaScript",
-    icon: "devicon-javascript-plain",
-    category: "Frontend",
-  },
-  {
-    name: "React.js",
-    icon: "devicon-react-original",
-    category: "Frontend",
-  },
-
-  {
-    name: "Livewire",
-    icon: "devicon-laravel-plain",
-    category: "Frontend",
-  },
-
-  {
-    name: "Java",
-    icon: "devicon-java-plain",
+    name: "Laravel",
+    icon: "devicon-laravel-original",
     category: "Backend",
   },
   {
@@ -42,18 +10,8 @@ export const skillsData = [
     category: "Backend",
   },
   {
-    name: "Python",
-    icon: "devicon-python-plain",
-    category: "Backend",
-  },
-  {
-    name: "Express",
-    icon: "devicon-express-original",
-    category: "Backend",
-  },
-  {
-    name: "Laravel",
-    icon: "devicon-laravel-plain",
+    name: "Livewire",
+    icon: "devicon-livewire-plain",
     category: "Backend",
   },
   {
@@ -62,19 +20,73 @@ export const skillsData = [
     category: "Database",
   },
   {
-    name: "MongoDB",
-    icon: "devicon-mongodb-plain",
-    category: "Database",
+    name: "PHPUnit",
+    icon: "fa-solid fa-flask-vial",
+    category: "Testing",
   },
-
+  {
+    name: "Pest",
+    icon: "fa-solid fa-vial",
+    category: "Testing",
+  },
+  {
+    name: "Application Security",
+    icon: "fa-solid fa-shield-halved",
+    category: "Security",
+  },
+  {
+    name: "VAPT",
+    icon: "fa-solid fa-bug",
+    category: "Security",
+  },
+  {
+    name: "Secure Code Review",
+    icon: "fa-solid fa-code-compare",
+    category: "Security",
+  },
+  {
+    name: "AI-Assisted Development",
+    icon: "fa-solid fa-robot",
+    category: "AI Tooling",
+  },
+  {
+    name: "MCP Servers",
+    icon: "fa-solid fa-plug",
+    category: "AI Tooling",
+  },
   {
     name: "Git",
     icon: "devicon-git-plain",
     category: "DevOps",
   },
   {
+    name: "GitLab",
+    icon: "devicon-gitlab-plain",
+    category: "DevOps",
+  },
+  {
+    name: "Server Administration",
+    icon: "fa-solid fa-server",
+    category: "DevOps",
+  },
+  {
     name: "Postman",
     icon: "devicon-postman-plain",
     category: "Tools",
-  }
-]; 
+  },
+  {
+    name: "Playwright",
+    icon: "devicon-playwright-plain",
+    category: "Tools",
+  },
+  {
+    name: "React.js",
+    icon: "devicon-react-original",
+    category: "Frontend",
+  },
+  {
+    name: "Tailwind CSS",
+    icon: "devicon-tailwindcss-plain",
+    category: "Frontend",
+  },
+];

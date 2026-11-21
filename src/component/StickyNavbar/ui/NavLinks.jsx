@@ -1,120 +1,63 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import NavItem from "./NavItem";
+import React from "react";
+import { motion } from "framer-motion";
+import useActiveSection from "../../layouts/useActiveSection";
 
 const navItems = [
-  { id: "home", icon: "fa-house", text: "Home" },
-  { id: "skills", icon: "fa-code", text: "Skills" },
-  { id: "education", icon: "fa-graduation-cap", text: "Education" },
-  { id: "experience", icon: "fa-briefcase", text: "Experience" },
-  { id: "contact", icon: "fa-phone", text: "Contact" },
-  { id: "projects", icon: "fa-folder", text: "Projects" },
+  { id: "skills", label: "Skills" },
+  { id: "practice", label: "Practice" },
+  { id: "experience", label: "Experience" },
+  { id: "education", label: "Education" },
+  { id: "projects", label: "Projects" },
+  { id: "contact", label: "Contact" },
 ];
 
 const NavLinks = ({ isMobile, scrollToSection }) => {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const active = useActiveSection();
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.07,
-        delayChildren: 0.1,
-      },
-    },
-  };
-
-  const menuVariants = {
-    hidden: { opacity: 0, y: -10, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 300,
-        damping: 25,
-      },
-    },
-    exit: {
-      opacity: 0,
-      y: -10,
-      scale: 0.95,
-      transition: { duration: 0.2 },
-    },
-  };
+  if (isMobile) {
+    return (
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-2 md:hidden">
+        {navItems.slice(0, 4).map((item) => (
+          <button
+            key={item.id}
+            type="button"
+            onClick={() => scrollToSection(item.id)}
+            className={`font-mono text-[10px] uppercase tracking-[0.14em] ${
+              active === item.id ? "text-ink" : "text-ink/45"
+            }`}
+          >
+            {item.label}
+          </button>
+        ))}
+      </div>
+    );
+  }
 
   return (
-    <div
-      className={`justify-between items-center ${
-        isMobile ? "flex md:hidden" : "hidden md:flex"
-      }`}
-    >
-      {isMobile ? (
-        <div className="relative">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-dgray hover:bg-dgray hover:text-white transition-colors duration-300"
+    <div className="hidden items-center gap-6 md:flex">
+      {navItems.map((item) => {
+        const isActive = active === item.id;
+        return (
+          <button
+            key={item.id}
+            type="button"
+            onClick={() => scrollToSection(item.id)}
+            aria-current={isActive ? "true" : undefined}
+            className={`relative font-mono text-[10px] uppercase tracking-[0.16em] transition-colors duration-200 ${
+              isActive ? "text-ink" : "text-ink/45 hover:text-ink"
+            }`}
           >
-            <i className={`fa-solid ${menuOpen ? "fa-xmark" : "fa-bars"}`}></i>
-          </motion.button>
-
-          <AnimatePresence>
-            {menuOpen && (
-              <motion.div
-                variants={menuVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                className="absolute top-12 right-0 bg-white rounded-xl shadow-lg p-2 z-20"
-                style={{ minWidth: "180px" }}
-              >
-                <motion.ul
-                  variants={containerVariants}
-                  className="grid grid-cols-1 gap-2"
-                >
-                  {navItems.map((item) => (
-                    <motion.li
-                      key={item.id}
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.97 }}
-                      className="flex items-center py-2 px-4 hover:bg-gray-100 rounded-lg cursor-pointer text-dgray"
-                      onClick={() => {
-                        scrollToSection(item.id);
-                        setMenuOpen(false);
-                      }}
-                    >
-                      <i className={`fa-solid ${item.icon} w-6`}></i>
-                      <span className="ml-2">{item.text}</span>
-                    </motion.li>
-                  ))}
-                </motion.ul>
-              </motion.div>
+            {item.label}
+            {isActive && (
+              <motion.span
+                layoutId="sticky-underline"
+                className="absolute -bottom-1 left-0 right-0 h-px bg-ink"
+                transition={{ duration: 0.25, ease: "easeOut" }}
+              />
             )}
-          </AnimatePresence>
-        </div>
-      ) : (
-        <motion.ul
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="flex gap-2 text-dgray transition-all"
-        >
-          {navItems.map((item, index) => (
-            <NavItem
-              key={item.id}
-              icon={item.icon}
-              text={item.text}
-              sectionId={item.id}
-              scrollToSection={scrollToSection}
-              isMobile={isMobile}
-            />
-          ))}
-        </motion.ul>
-      )}
+          </button>
+        );
+      })}
     </div>
   );
 };

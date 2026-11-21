@@ -5,8 +5,28 @@
 @tailwind utilities;
 
 @layer base {
-  * {
-    @apply font-sans;
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-paper text-ink font-sans;
+  }
+
+  ::selection {
+    background-color: rgba(17, 17, 16, 0.12);
+  }
+
+  :focus-visible {
+    outline: none;
+    @apply ring-2 ring-ink/40 ring-offset-2 ring-offset-paper;
+  }
+
+  section[id],
+  div[id] {
+    scroll-margin-top: 6rem;
   }
 }
 
@@ -23,28 +43,51 @@
   .animate-draw {
     animation: draw 8s ease;
   }
+
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.02;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }
 
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 10px;
+  background: #F2F0EB;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 10px;
+  background: #2a2a2c;
+  border-radius: 999px;
+  border: 2px solid #0f0f0f;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
-html {
-  scroll-behavior: smooth;
+  background: #3e3e41;
 }
 
 .element::before {
@@ -332,4 +375,75 @@ html {
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background-color: rgba(255, 255, 255, 0.5);
+}
+@layer components {
+  .union-both,
+  .union-l,
+  .union-r {
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+
+  .union-both {
+    -webkit-mask-image: radial-gradient(
+        circle 12px at 0 0,
+        transparent 11px,
+        #000 12px
+      ),
+      radial-gradient(circle 12px at 100% 0, transparent 11px, #000 12px);
+    -webkit-mask-composite: source-in;
+    mask-image: radial-gradient(
+        circle 12px at 0 0,
+        transparent 11px,
+        #000 12px
+      ),
+      radial-gradient(circle 12px at 100% 0, transparent 11px, #000 12px);
+    mask-composite: intersect;
+  }
+
+  .union-l {
+    -webkit-mask-image: radial-gradient(
+      circle 12px at 0 0,
+      transparent 11px,
+      #000 12px
+    );
+    mask-image: radial-gradient(circle 12px at 0 0, transparent 11px, #000 12px);
+  }
+
+  .union-r {
+    -webkit-mask-image: radial-gradient(
+      circle 12px at 100% 0,
+      transparent 11px,
+      #000 12px
+    );
+    mask-image: radial-gradient(
+      circle 12px at 100% 0,
+      transparent 11px,
+      #000 12px
+    );
+  }
+
+  .nav-union {
+    -webkit-mask-image: radial-gradient(
+      circle 14px at 0 0,
+      transparent 13px,
+      #000 14px
+    );
+    mask-image: radial-gradient(circle 14px at 0 0, transparent 13px, #000 14px);
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+}
+@layer utilities {
+  .canvas-grid {
+    background-image:
+      linear-gradient(to right, rgba(17, 17, 16, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(17, 17, 16, 0.03) 1px, transparent 1px);
+    background-size: 80px 80px;
+    background-position: center top;
+  }
 }

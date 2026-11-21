@@ -2,78 +2,62 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const EducationItem = ({ education }) => {
+  const achievement = education.achievement || education.whatILearned;
+
   return (
-    <motion.div
-      className="relative bg-white shadow-md rounded-[1rem] p-6 hover:shadow-lg transition-all mb-8 overflow-hidden w-full"
-      whileHover={{
-        scale: 1.02,
-        boxShadow:
-          "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-      }}
-      whileTap={{ scale: 0.98 }}
+    <motion.article
       variants={{
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0 },
+        hidden: { opacity: 0, y: 16 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
       }}
+      className="flex flex-col gap-5 rounded-[18px] border border-line p-5 sm:flex-row sm:items-start sm:gap-6 sm:p-6"
     >
-      <div className="absolute top-0 right-0 w-16 h-16 bg-dgray opacity-10 rounded-full -mr-8 -mt-8"></div>
+      <img
+        src={education.image}
+        alt=""
+        className="h-12 w-12 shrink-0 rounded-xl object-cover"
+      />
 
-      <div className="flex flex-col md:flex-row justify-between md:items-center mb-4">
-        <div className="flex items-start md:items-center gap-3">
-          <div className="hidden md:flex">
-            <img src={education.image} alt="STI College Ortigas-Cainta" className="rounded-full h-12" />
-          </div>
+      <div className="flex-1">
+        <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
           <div>
-            <h3 className="text-xl 2xl:text-2xl font-bold text-dgray">
+            <h4 className="font-display text-base font-bold leading-snug text-dgray">
               {education.institution}
-            </h3>
-            <p className="text-md md:text-xl 2xl:text-2xl text-gray">
-              {education.degree}
-            </p>
+            </h4>
+            <p className="mt-0.5 text-[14px] text-gray-500">{education.degree}</p>
           </div>
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-line px-2.5 py-1 font-mono text-2xs uppercase tracking-wide text-gray-500">
+            <i className="fa-regular fa-calendar text-2xs" aria-hidden="true" />
+            {education.period}
+          </span>
         </div>
-        <p className="text-sm md:text-lg 2xl:text-xl font-medium text-white mt-3 md:mt-0 bg-dgray rounded-full px-3 py-1 inline-block">
-          {education.period}
-        </p>
-      </div>
 
-      <div className="pl-0 md:pl-2">
-        <h4 className="text-lg md:text-xl 2xl:text-2xl font-semibold text-dgray mb-3">
-          Achievement
-        </h4>
-        <ul className="list-disc text-md md:text-lg 2xl:text-xl text-gray">
-          {education.whatILearned}
-        </ul>
+        {achievement && (
+          <p className="mt-4 inline-flex items-center gap-2 rounded-lg bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-700">
+            <i className="fa-solid fa-award" aria-hidden="true" />
+            {achievement.replace(/^-\s*/, "")}
+          </p>
+        )}
 
         {education.courses && (
           <div className="mt-4">
-            <h4 className="text-lg md:text-xl 2xl:text-2xl font-semibold text-dgray mb-2">
-              Key Courses
-            </h4>
-            <div className="flex flex-wrap gap-2">
-              {education.courses.map((course, index) => (
-                <motion.span
-                  key={index}
-                  className="bg-gray-50 text-gray px-3 py-1 rounded-full text-sm border border-gray-200 md:text-md 2xl:text-lg"
-                  variants={{
-                    hidden: { opacity: 0, scale: 0.8 },
-                    visible: {
-                      opacity: 1,
-                      scale: 1,
-                      transition: {
-                        delay: 0.3 + index * 0.1,
-                      },
-                    },
-                  }}
+            <p className="font-mono text-2xs uppercase tracking-[0.16em] text-gray-500">
+              Key courses
+            </p>
+            <div className="mt-2 flex flex-wrap gap-1.5">
+              {education.courses.map((course) => (
+                <span
+                  key={course}
+                  className="rounded-full border border-line bg-paper2 px-2.5 py-1 text-xs text-gray-600"
                 >
                   {course}
-                </motion.span>
+                </span>
               ))}
             </div>
           </div>
         )}
       </div>
-    </motion.div>
+    </motion.article>
   );
 };
 

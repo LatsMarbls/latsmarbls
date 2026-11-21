@@ -26,9 +26,8 @@ const SkillsJourney = () => {
         My Skills Journey
       </h2>
       <p className="text-gray-600 text-md">
-        Throughout my journey as a developer, I've worked with various
-        technologies and frameworks. Here's a showcase of my technical skills
-        and expertise.
+        A backend-first toolkit: Laravel and PHP day to day, with the testing,
+        security and AI tooling that keep shipped work reviewable.
       </p>
     </motion.div>
   );
