@@ -6,7 +6,7 @@
 
 Personal portfolio — from a prompt-style loading screen to a cursor swarm that draws the page in front of you.
 
-[![v2.1.4](https://img.shields.io/badge/version-v2.1.4-0D99FF?style=flat-square)](https://github.com/LatsMarbls/latsmarbls/releases/tag/v2.1.4)
+[![v2.1.5](https://img.shields.io/badge/version-v2.1.5-0D99FF?style=flat-square)](https://github.com/LatsMarbls/latsmarbls/releases/tag/v2.1.5)
 [![Live](https://img.shields.io/badge/live-latsmarbls.vercel.app-08090B?style=flat-square&labelColor=1e1e1e)](https://latsmarbls.vercel.app)
 [![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react&logoColor=white)](https://react.dev)
 [![Vite](https://img.shields.io/badge/Vite-6-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev)
@@ -97,7 +97,8 @@ npm run lint       # run ESLint
 
 | Version | Status | Release | Source |
 |---|---|---|---|
-| v2.1.4 | Current / live | [v2.1.4](https://github.com/LatsMarbls/latsmarbls/releases/tag/v2.1.4) | `main` |
+| v2.1.5 | Current / live | [v2.1.5](https://github.com/LatsMarbls/latsmarbls/releases/tag/v2.1.5) | `main` |
+| v2.1.4 | Previous | [v2.1.4](https://github.com/LatsMarbls/latsmarbls/releases/tag/v2.1.4) | `main` history |
 | v2.1.3 | Previous | [v2.1.3](https://github.com/LatsMarbls/latsmarbls/releases/tag/v2.1.3) | `main` history |
 | v2.1.2 | Previous | [v2.1.2](https://github.com/LatsMarbls/latsmarbls/releases/tag/v2.1.2) | `main` history |
 | v2.1.1 | Previous | [v2.1.1](https://github.com/LatsMarbls/latsmarbls/releases/tag/v2.1.1) | `main` history |

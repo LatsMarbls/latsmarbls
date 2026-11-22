@@ -1,6 +1,6 @@
 import { DESIGN_SECTIONS, DESIGN_VARIANTS } from "./registry";
 
-const STORAGE_KEY = "lm-design-v2.1.0";
+const STORAGE_KEY = "lm-design-v2.1.5";
 
 function getCounts() {
   const counts = {};
@@ -19,7 +19,6 @@ function isValidSelection(selection) {
       selection[section] < (DESIGN_VARIANTS[section]?.length || 1)
   );
 }
-// Retained for ?design= validation debugging; not used by the deterministic path.
 
 function parseQueryOverride() {
   if (typeof window === "undefined") return null;
@@ -58,33 +57,48 @@ function parseQueryOverride() {
   return Object.keys(overrides).length ? overrides : null;
 }
 
-export const DEFAULT_DESIGN = {
-  nav: 0,
-  hero: 0,
-  skills: 0,
-  practice: 0,
-  experience: 0,
-  projects: 5,
-  contact: 0,
-  footer: 3,
-};
-
 function generateSelection(overrides = {}) {
   const counts = getCounts();
   const selection = {};
   for (const section of DESIGN_SECTIONS) {
-    const wanted = overrides[section] ?? DEFAULT_DESIGN[section] ?? 0;
-    selection[section] =
-      ((wanted % counts[section]) + counts[section]) % counts[section];
+    if (overrides[section] !== undefined) {
+      selection[section] =
+        ((overrides[section] % counts[section]) + counts[section]) %
+        counts[section];
+    } else {
+      selection[section] = Math.floor(Math.random() * counts[section]);
+    }
   }
   return selection;
 }
 
 export function getDesignSelection() {
-  // Deterministic by default: every visitor sees the reviewed design.
-  // Exploratory combinations are opt-in via ?design=... for review only.
+  if (typeof window === "undefined") {
+    return generateSelection();
+  }
+
   const overrides = parseQueryOverride();
-  return generateSelection(overrides || {});
+  if (overrides) {
+    const selection = generateSelection(overrides);
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(selection));
+    } catch { /* ignore storage errors */ }
+    return selection;
+  }
+
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (isValidSelection(parsed)) return parsed;
+    }
+  } catch { /* ignore storage errors */ }
+
+  const selection = generateSelection();
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(selection));
+  } catch { /* ignore storage errors */ }
+  return selection;
 }
 
 export function shuffleDesign() {

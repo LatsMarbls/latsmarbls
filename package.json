@@ -1,7 +1,7 @@
 {
   "name": "latsmarbls-portfolio",
   "private": true,
-  "version": "2.1.4",
+  "version": "2.1.5",
   "type": "module",
   "homepage": "https://latsmarbls.vercel.app",
   "scripts": {

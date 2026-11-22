@@ -2,6 +2,12 @@
 
 All notable changes to this portfolio are documented in this file.
 
+## [2.1.5] — 2026-11-22
+
+### Fixed
+- Restored randomized design selection with `localStorage` caching (`lm-design-v2.1.5`).
+- `?design=shuffle` now forces a new random combo instead of falling back to a static default.
+
 ## [2.1.4] — 2026-11-22
 
 ### Changed
