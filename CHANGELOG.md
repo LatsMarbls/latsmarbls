@@ -2,6 +2,14 @@
 
 All notable changes to this portfolio are documented in this file.
 
+## [2.1.3] — 2026-11-22
+
+### Added
+- 3 extra Nav variants: `pill`, `underline`, `banner` (6 total).
+- 3 extra Hero variants: `magazine`, `minimal`, `stack` (6 total).
+- 3 extra Projects variants: `compact`, `masonry`, `feature` (6 total).
+- 3 extra Footer variants: `minimal`, `signature`, `grid` (6 total).
+
 ## [2.1.2] — 2026-11-22
 
 ### Added

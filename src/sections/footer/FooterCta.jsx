@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import { ArrowUpRight } from "../../ui/Icons";
-import { navItemShape, profileShape, versionShape } from "../propTypes";
+import { navItemShape, profileShape, socialShape, versionShape } from "../propTypes";
 
-export default function FooterCta({ profile, nav, version }) {
+export default function FooterCta({ profile, nav, socials, version }) {
   return (
     <footer className="border-t border-line bg-panel/30" data-build="footer">
       <div className="shell py-12 md:py-16">
@@ -80,5 +80,6 @@ export default function FooterCta({ profile, nav, version }) {
 FooterCta.propTypes = {
   profile: profileShape.isRequired,
   nav: PropTypes.arrayOf(navItemShape).isRequired,
+  socials: PropTypes.arrayOf(socialShape),
   version: versionShape.isRequired,
 };

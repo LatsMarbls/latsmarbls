@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import { ArrowUpRight } from "../../ui/Icons";
-import { navItemShape, profileShape, versionShape } from "../propTypes";
+import { navItemShape, profileShape, socialShape, versionShape } from "../propTypes";
 
-export default function FooterBar({ profile, nav, version }) {
+export default function FooterBar({ profile, nav, socials, version }) {
   return (
     <footer className="border-t border-line bg-panel/30" data-build="footer">
       <div className="shell flex h-[68px] flex-col items-center justify-between gap-3 py-3 sm:flex-row sm:gap-6">
@@ -50,5 +50,6 @@ export default function FooterBar({ profile, nav, version }) {
 FooterBar.propTypes = {
   profile: profileShape.isRequired,
   nav: PropTypes.arrayOf(navItemShape).isRequired,
+  socials: PropTypes.arrayOf(socialShape),
   version: versionShape.isRequired,
 };
