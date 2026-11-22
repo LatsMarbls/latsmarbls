@@ -4,7 +4,7 @@ import Button from "../../layouts/buttons/Button";
 
 const socials = [
   {
-    href: "https://github.com/Havennnn",
+    href: "https://github.com/latsmarbls",
     icon: "fa-brands fa-github",
     label: "GitHub",
   },
@@ -14,7 +14,7 @@ const socials = [
     label: "LinkedIn",
   },
   {
-    href: "mailto:marablelatrell@gmail.com",
+    href: "mailto:latrellmarable00@gmail.com",
     icon: "fa-solid fa-envelope",
     label: "Email",
   },

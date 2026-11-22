@@ -4,7 +4,7 @@ export const projectsData = [
     image: "/mernAuth.jpg",
     description:
       "A fully functional authentication system built on the MERN stack, with email verification and password reset through a 6-digit OTP.",
-    githubLink: "https://github.com/Havennnn/mern-auth",
+    githubLink: "https://github.com/latsmarbls/mern-auth",
     liveLink: "https://login-auth-by4k.vercel.app",
     technologies: [
       { name: "MongoDB", icon: "devicon-mongodb-plain" },
@@ -18,7 +18,7 @@ export const projectsData = [
     image: "/storyWeaver.jpg",
     description:
       "A modern and dynamic storytelling platform built using React, Tailwind CSS, and React Router. Story Weaver combines cutting-edge technology with creativity, integrating the Google Generative AI API for crafting immersive narratives.",
-    githubLink: "https://github.com/Havennnn/StoryWeaver",
+    githubLink: "https://github.com/latsmarbls/StoryWeaver",
     liveLink: "https://story-weaver-two.vercel.app",
     technologies: [
       { name: "React", icon: "devicon-react-original" },
@@ -32,7 +32,7 @@ export const projectsData = [
     image: "/curatorArt.jpg",
     description:
       "A sleek and responsive art curation platform designed using React, Node.js, and Tailwind CSS. This website allows users to explore through a clean and modern interface.",
-    githubLink: "https://github.com/Havennnn/curatorArt",
+    githubLink: "https://github.com/latsmarbls/curatorArt",
     liveLink: "https://curator-art.vercel.app",
     technologies: [
       { name: "React", icon: "devicon-react-original" },
@@ -44,7 +44,7 @@ export const projectsData = [
     image: "/saasLandingPage.jpg",
     description:
       "A modern landing page designed using React, Framer, and Tailwind CSS. This website allows users to explore through a clean and modern interface.",
-    githubLink: "https://github.com/Havennnn/lightsaas-landingpage",
+    githubLink: "https://github.com/latsmarbls/lightsaas-landingpage",
     liveLink: "https://lightsaas-landingpage-tau.vercel.app",
     technologies: [
       { name: "React", icon: "devicon-react-original" },
@@ -57,7 +57,7 @@ export const projectsData = [
     image: "/nextJob.png",
     description:
       "NextJob is a dynamic job listing platform built with Laravel and Livewire. MySQL managing the backend database.",
-    githubLink: "https://github.com/Havennnn/Joblisting",
+    githubLink: "https://github.com/latsmarbls/Joblisting",
     liveLink: "#",
     technologies: [
       { name: "TailwindCSS", icon: "devicon-tailwindcss-plain" },
@@ -72,7 +72,7 @@ export const projectsData = [
     image: "/cabi.png",
     description:
       "Cabi is a taxi-hailing backend and website for an application job built with Laravel and Livewire. MySQL managing the backend database.",
-    githubLink: "https://github.com/Havennnn/Cabi",
+    githubLink: "https://github.com/latsmarbls/Cabi",
     liveLink: "#",
     technologies: [
       { name: "TailwindCSS", icon: "devicon-tailwindcss-plain" },

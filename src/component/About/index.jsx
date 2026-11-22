@@ -102,10 +102,10 @@ const About = () => {
               text="Send a message"
             />
             <a
-              href="mailto:marablelatrell@gmail.com"
+              href="mailto:latrellmarable00@gmail.com"
               className="text-sm font-semibold text-gray-600 underline-offset-4 transition-colors hover:text-dgray hover:underline"
             >
-              marablelatrell@gmail.com
+              latrellmarable00@gmail.com
             </a>
           </div>
 

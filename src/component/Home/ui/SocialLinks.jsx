@@ -58,7 +58,7 @@ const SocialLinks = ({ openModal }) => {
         >
           <motion.li variants={item} className="flex mt-1">
             <motion.a
-              href="https://github.com/Havennnn"
+              href="https://github.com/latsmarbls"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.1, color: "#d6d6d6" }}

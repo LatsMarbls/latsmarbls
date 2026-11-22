@@ -2,7 +2,7 @@ import React from "react";
 
 const links = [
   {
-    href: "https://github.com/Havennnn",
+    href: "https://github.com/latsmarbls",
     icon: "fa-brands fa-github",
     label: "GitHub",
   },
@@ -17,7 +17,7 @@ const links = [
     label: "Facebook",
   },
   {
-    href: "https://www.instagram.com/lancrms/",
+    href: "https://www.instagram.com/latsmarbls/",
     icon: "fa-brands fa-instagram",
     label: "Instagram",
   },

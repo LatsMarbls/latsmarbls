@@ -4,8 +4,8 @@ import SocialLinks from "./SocialLinks";
 const details = [
   {
     label: "Email",
-    value: "marablelatrell@gmail.com",
-    href: "mailto:marablelatrell@gmail.com",
+    value: "latrellmarable00@gmail.com",
+    href: "mailto:latrellmarable00@gmail.com",
     icon: "fa-solid fa-envelope",
   },
   {
