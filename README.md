@@ -1,120 +1,70 @@
 <div align="center">
 
-# LatsMarbls
+# Latrell Marable
 
-**Laravel Backend Developer**
+**Backend Developer · Laravel · PHP · Security-focused**
 
-Personal portfolio — from a prompt-style loading screen to a cursor swarm that draws the page in front of you.
+I build Laravel systems where security, testing and code review are part of the work — not a pass at the end.
 
-[![v2.1.5](https://img.shields.io/badge/version-v2.1.5-0D99FF?style=flat-square)](https://github.com/LatsMarbls/latsmarbls/releases/tag/v2.1.5)
-[![Live](https://img.shields.io/badge/live-latsmarbls.vercel.app-08090B?style=flat-square&labelColor=1e1e1e)](https://latsmarbls.vercel.app)
+[![Live portfolio](https://img.shields.io/badge/live-latsmarbls.vercel.app-08090B?style=flat-square&labelColor=1e1e1e)](https://latsmarbls.vercel.app)
+[![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=flat-square&logo=laravel&logoColor=white)](https://laravel.com)
+[![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=php&logoColor=white)](https://php.net)
 [![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react&logoColor=white)](https://react.dev)
-[![Vite](https://img.shields.io/badge/Vite-6-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 
 </div>
 
-## Live demo
+## About me
 
-- **v2 — Cursor swarm redesign:** [latsmarbls.vercel.app](https://latsmarbls.vercel.app)
-- **v1 — Legacy portfolio:** [v1.0.0 archive](https://github.com/LatsMarbls/latsmarbls/tree/v1.0.0)
+Backend-first developer focused on building secure, tested Laravel applications. I spend most of my time in PHP, MySQL and Laravel, with enough React and Tailwind to ship and debug the interface myself.
 
-## What’s special
+My workflow is built around writing code that can be reviewed, tested and deployed without surprises:
 
-This version of the site is built around an **AI-agent loading experience**:
-
-1. A terminal-style intro types out a build command.
-2. A swarm of cursors scans the page and draws every section.
-3. The overlay fades to reveal the finished portfolio.
-
-The whole thing is interactive — you can skip the build at any time, and reduced-motion users get a fast, accessible fallback.
-
-## Preview
-
-![Portfolio preview](./docs/preview.png)
-
-## Features
-
-- Prompt-style intro loading screen
-- Cursor swarm rebuild / tour overlay
-- Randomized design variants for every section, cached per visitor
-- Responsive dark UI
-- Single `<h1>`, focus outlines, screen-reader friendly markup
-- Reduced-motion safe
-- Vercel Analytics
+- **Security by default** — input handling, permission boundaries and data exposure are part of every feature.
+- **Automated testing** — PHPUnit/Pest coverage written alongside the feature, not after the bug report.
+- **Code review** — evaluating implementations for risk, correctness and maintainability.
+- **AI-assisted delivery** — using AI tools with defined scope, permissions and safeguards, then verifying the output.
+- **Server & deployment** — comfortable with configuration, patching, services and environment-level troubleshooting.
 
 ## Tech stack
 
-- **React 18** + **Vite 6**
-- **Tailwind CSS 3**
-- **Framer Motion** for the intro transition
-- Custom `public/swarm.js` for the cursor swarm
+**Backend**
 
-## Project structure
+- Laravel · PHP · Livewire
+- MySQL · schema design · query tuning
+- PHPUnit · Pest
 
-```text
-public/
-  swarm.js           # vendored cursor-swarm rebuild script
-  LM.svg             # white monogram logo
-src/
-  content/           # site copy, skills, projects, version
-  sections/          # Hero, Skills, Practice, Experience, Projects, Contact, Footer
-  ui/                # Intro, SwarmRebuild, Icons, Reveal, Section
-```
+**Security & quality**
 
-## Randomized designs
+- Application security · secure code review · VAPT
+- Git · GitLab · CI/CD
+- Postman · Playwright
 
-Each visit picks a random prepared design for the navbar, hero, every section and the footer. The selection is cached in `localStorage` under `lm-design-v2.1.0`, so repeat visits show the same layout until the cache is cleared.
+**Frontend (when needed)**
 
-Force a new selection by adding `?design=shuffle` to the URL:
+- React.js · Tailwind CSS
 
-```text
-https://latsmarbls.vercel.app/?design=shuffle
-```
+## Projects
 
-For testing a specific combination, use section overrides:
+A few things I’ve built:
 
-```text
-https://latsmarbls.vercel.app/?design=nav:1,hero:2,skills:0,practice:1,experience:2,projects:0,contact:1,footer:2
-```
+- **Login Auth** — MERN-stack authentication with email verification and password reset via 6-digit OTP.
+- **NextJob** — Laravel + Livewire job listing platform with application flow.
+- **Cabi** — Taxi-hailing backend and site with Laravel and Livewire.
+- **Story Weaver** — React app that generates narratives with the Google Generative AI API.
+- **Art Curator** — React-based art curation browsing interface.
+- **SaaS Landing Page** — Product launch landing page built with React, Framer Motion and Tailwind.
 
-## Getting started
+## Education
 
-```bash
-npm install
-npm run dev
-```
+- **BS Computer Science** — Cum Laude, GWA 1.4
+- **ICT** — Average 89%
 
-Other scripts:
+## This repo
 
-```bash
-npm run build      # production build
-npm run preview    # preview the production build
-npm run lint       # run ESLint
-```
+This repository is the source for my portfolio site at [latsmarbls.vercel.app](https://latsmarbls.vercel.app). It’s a React + Vite build with a randomized design-variant system — every visit picks a prepared layout for the navbar, hero, sections and footer, then caches the choice so repeat visits stay consistent. Add `?design=shuffle` to force a new combo.
 
-## Versioning
-
-| Version | Status | Release | Source |
-|---|---|---|---|
-| v2.1.5 | Current / live | [v2.1.5](https://github.com/LatsMarbls/latsmarbls/releases/tag/v2.1.5) | `main` |
-| v2.1.4 | Previous | [v2.1.4](https://github.com/LatsMarbls/latsmarbls/releases/tag/v2.1.4) | `main` history |
-| v2.1.3 | Previous | [v2.1.3](https://github.com/LatsMarbls/latsmarbls/releases/tag/v2.1.3) | `main` history |
-| v2.1.2 | Previous | [v2.1.2](https://github.com/LatsMarbls/latsmarbls/releases/tag/v2.1.2) | `main` history |
-| v2.1.1 | Previous | [v2.1.1](https://github.com/LatsMarbls/latsmarbls/releases/tag/v2.1.1) | `main` history |
-| v2.1.0 | Previous | [v2.1.0](https://github.com/LatsMarbls/latsmarbls/releases/tag/v2.1.0) | `main` history |
-| v2.0.0 | Previous | [v2.0.0](https://github.com/LatsMarbls/latsmarbls/releases/tag/v2.0.0) | `main` history |
-| v1.0.0 | Legacy | [v1.0.0](https://github.com/LatsMarbls/latsmarbls/releases/tag/v1.0.0) | [`v1`](https://github.com/LatsMarbls/latsmarbls/tree/v1.0.0) |
-
-See [CHANGELOG.md](./CHANGELOG.md) for the full history.
-
-## Deployment
-
-The site deploys automatically to **Vercel** from the `main` branch. Pull requests and other branches get preview deployments.
-
-## Author
-
-**Latrell Marable**
+## Get in touch
 
 - GitHub: [@LatsMarbls](https://github.com/LatsMarbls)
 - LinkedIn: [latrell-marable](https://www.linkedin.com/in/latrell-marable-b43a37256/)
