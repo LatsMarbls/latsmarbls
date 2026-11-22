@@ -1,23 +1,98 @@
-# Hi! I am LatsMarbls 👋
-**`Backend Developer`**
+<div align="center">
 
-I'm a web developer. I specialize in backend mainly in PHP and Laravel Framework.
+# LatsMarbls
 
-## Portfolio: [latsmarbls.vercel.app](http://latsmarbls.vercel.app)
+**Laravel Backend Developer**
 
-### 💻 Languages and Tools
+Personal portfolio — from a prompt-style loading screen to a cursor swarm that draws the page in front of you.
 
-<img align="left" alt="Tailwind CSS" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" />
-<img align="left" alt="JavaScript" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg" />
-<img align="left" alt="PHP" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" />
-<img align="left" alt="Java" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" />
-<img align="left" alt="Python" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vue/vue-plain.svg" />
-<img align="left" alt="React" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" />
-<img align="left" alt="ExpressJS" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" />
-<img align="left" alt="Laravel" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" />
-<img align="left" alt="MongoDB" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" />
-<img align="left" alt="MySQL" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" />
+[![v2.0.0](https://img.shields.io/badge/version-v2.0.0-0D99FF?style=flat-square)](https://github.com/LatsMarbls/latsmarbls/releases/tag/v2.0.0)
+[![Live](https://img.shields.io/badge/live-latsmarbls.vercel.app-08090B?style=flat-square&labelColor=1e1e1e)](https://latsmarbls.vercel.app)
+[![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react&logoColor=white)](https://react.dev)
+[![Vite](https://img.shields.io/badge/Vite-6-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 
+</div>
 
-<br />
-<br />
+## Live demo
+
+- **v2 — Cursor swarm redesign:** [latsmarbls.vercel.app](https://latsmarbls.vercel.app)
+- **v1 — Legacy portfolio:** [v1.0.0 archive](https://github.com/LatsMarbls/latsmarbls/tree/v1.0.0)
+
+## What’s special
+
+This version of the site is built around an **AI-agent loading experience**:
+
+1. A terminal-style intro types out a build command.
+2. A swarm of cursors scans the page and draws every section.
+3. The overlay fades to reveal the finished portfolio.
+
+The whole thing is interactive — you can skip the build at any time, and reduced-motion users get a fast, accessible fallback.
+
+## Preview
+
+![Portfolio preview](./docs/preview.png)
+
+## Features
+
+- Prompt-style intro loading screen
+- Cursor swarm rebuild / tour overlay
+- Responsive dark UI
+- Single `<h1>`, focus outlines, screen-reader friendly markup
+- Reduced-motion safe
+- Vercel Analytics
+
+## Tech stack
+
+- **React 18** + **Vite 6**
+- **Tailwind CSS 3**
+- **Framer Motion** for the intro transition
+- Custom `public/swarm.js` for the cursor swarm
+
+## Project structure
+
+```text
+public/
+  swarm.js           # vendored cursor-swarm rebuild script
+  LM.svg             # white monogram logo
+src/
+  content/           # site copy, skills, projects, version
+  sections/          # Hero, Skills, Practice, Experience, Projects, Contact, Footer
+  ui/                # Intro, SwarmRebuild, Icons, Reveal, Section
+```
+
+## Getting started
+
+```bash
+npm install
+npm run dev
+```
+
+Other scripts:
+
+```bash
+npm run build      # production build
+npm run preview    # preview the production build
+npm run lint       # run ESLint
+```
+
+## Versioning
+
+| Version | Status | Release | Source |
+|---|---|---|---|
+| v2.0.0 | Current / live | [v2.0.0](https://github.com/LatsMarbls/latsmarbls/releases/tag/v2.0.0) | `main` |
+| v1.0.0 | Legacy | [v1.0.0](https://github.com/LatsMarbls/latsmarbls/releases/tag/v1.0.0) | [`v1`](https://github.com/LatsMarbls/latsmarbls/tree/v1.0.0) |
+
+See [CHANGELOG.md](./CHANGELOG.md) for the full history.
+
+## Deployment
+
+The site deploys automatically to **Vercel** from the `main` branch. Pull requests and other branches get preview deployments.
+
+## Author
+
+**Latrell Marable**
+
+- GitHub: [@LatsMarbls](https://github.com/LatsMarbls)
+- LinkedIn: [latrell-marable](https://www.linkedin.com/in/latrell-marable-b43a37256/)
+- Email: [latrellmarable00@gmail.com](mailto:latrellmarable00@gmail.com)

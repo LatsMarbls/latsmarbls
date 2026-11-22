@@ -61,6 +61,16 @@ const NavItem = ({
   return (
     <motion.li
       onClick={() => scrollToSection(sectionId)}
+      role="button"
+      tabIndex={0}
+      aria-label={text}
+      title={text}
+      onKeyDown={(event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          scrollToSection(sectionId);
+        }
+      }}
       className={`${baseClasses} ${
         isMobile
           ? "px-2 w-[45px] h-[45px] text-sm"

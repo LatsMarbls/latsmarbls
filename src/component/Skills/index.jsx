@@ -1,8 +1,9 @@
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
-import SkillsHeader from "./ui/SkillsHeader";
-import SkillsJourney from "./ui/SkillsJourney";
 import SkillsList from "./ui/SkillsList";
+import SectionBadge from "../layouts/SectionBadge";
+import SectionSwarm from "../layouts/SectionSwarm";
+
 import useSkillsAnimation from "./hooks/useSkillsAnimation";
 
 const Skills = () => {
@@ -10,56 +11,34 @@ const Skills = () => {
   const { scrollTriggerReached, scrollProgress } =
     useSkillsAnimation(sectionRef);
 
-  const containerVariants = {
-    hidden: { opacity: 0, y: 20, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 25,
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 20,
-      },
-    },
-  };
-
   return (
-    <section ref={sectionRef} className="pt-10">
+    <section ref={sectionRef}>
       <motion.div
-        className="relative flex flex-col w-full h-full px-6 sm:px-14 py-10 bg-white rounded-[1.5rem] 2xl:rounded-[2rem] justify-center items-center"
-        variants={containerVariants}
-        initial="hidden"
-        animate={scrollTriggerReached ? "visible" : "hidden"}
-        style={{
-          opacity: scrollTriggerReached ? 1 : scrollProgress,
-          transform: `scale(${
-            scrollTriggerReached ? 1 : 0.95 + scrollProgress * 0.05
-          }) translateY(${
-            scrollTriggerReached ? 0 : 20 * (1 - scrollProgress)
-          }px)`,
-        }}
+        className="relative w-full border-t border-line pb-16 pt-10 sm:pt-12"
+        initial={{ opacity: 0, y: 20 }}
+        animate={scrollTriggerReached ? { opacity: 1, y: 0 } : {}}
+        style={
+          scrollTriggerReached
+            ? undefined
+            : { opacity: scrollProgress, transform: `translateY(${12 * (1 - scrollProgress)}px)` }
+        }
+        transition={{ duration: 0.45, ease: "easeOut" }}
       >
-        <SkillsHeader />
-        <motion.div className="w-full" variants={itemVariants}>
-          <SkillsJourney />
-          <SkillsList />
-        </motion.div>
+        <SectionBadge index="02" title="Skills" icon="fa-solid fa-code" place="center" />
+
+        <SectionSwarm />
+
+        <div className="mt-8 max-w-2xl">
+          <h3 className="font-display text-[28px] font-bold leading-[1.15] tracking-tight text-dgray sm:text-[30px]">
+            The stack I work in
+          </h3>
+          <p className="mt-3 text-[15px] leading-relaxed text-gray-500">
+            Backend first — Laravel and PHP day to day, supported by the
+            testing, security and AI tooling that keep shipped work reviewable.
+          </p>
+        </div>
+
+        <SkillsList />
       </motion.div>
     </section>
   );

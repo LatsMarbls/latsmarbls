@@ -1,59 +1,50 @@
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import EducationList from "./ui/EducationList";
+import SectionBadge from "../layouts/SectionBadge";
+import SectionSwarm from "../layouts/SectionSwarm";
+
 import useSkillsAnimation from "../Skills/hooks/useSkillsAnimation";
-import EducationHeader from "./ui/EducationHeader";
+
 const School = () => {
   const sectionRef = useRef(null);
   const { scrollTriggerReached, scrollProgress } =
     useSkillsAnimation(sectionRef);
 
-  const containerVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 20,
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 20,
-      },
-    },
-  };
-
   return (
-    <section ref={sectionRef} className="pt-10">
+    <section ref={sectionRef}>
       <motion.div
-        className="relative flex flex-col w-full h-full px-6 sm:px-14 pt-10 pb-8 bg-white rounded-[1.5rem] 2xl:rounded-[2rem] justify-center items-center"
-        variants={containerVariants}
-        initial="hidden"
-        animate={scrollTriggerReached ? "visible" : "hidden"}
-        style={{
-          opacity: scrollTriggerReached ? 1 : scrollProgress,
-          transform: `scale(${
-            scrollTriggerReached ? 1 : 0.95 + scrollProgress * 0.05
-          })`,
-        }}
+        className="relative w-full border-t border-line pb-16 pt-10 sm:pt-12"
+        initial={{ opacity: 0, y: 20 }}
+        animate={scrollTriggerReached ? { opacity: 1, y: 0 } : {}}
+        style={
+          scrollTriggerReached
+            ? undefined
+            : { opacity: scrollProgress, transform: `translateY(${12 * (1 - scrollProgress)}px)` }
+        }
+        transition={{ duration: 0.45, ease: "easeOut" }}
       >
-        <EducationHeader />
-        <motion.div className="w-full mt-12" variants={itemVariants}>
+        <SectionBadge
+          index="05"
+          title="Education"
+          icon="fa-solid fa-graduation-cap" place="left"
+        />
+
+        <SectionSwarm />
+
+        <div className="mt-8 max-w-2xl">
+          <h3 className="font-display text-[28px] font-bold leading-[1.15] tracking-tight text-dgray sm:text-[30px]">
+            Academic background
+          </h3>
+          <p className="mt-3 text-[15px] leading-relaxed text-gray-500">
+            Computer Science graduate, Cum Laude — the theory behind the
+            practice, plus the fundamentals I still lean on.
+          </p>
+        </div>
+
+        <div className="mt-9">
           <EducationList />
-        </motion.div>
+        </div>
       </motion.div>
     </section>
   );

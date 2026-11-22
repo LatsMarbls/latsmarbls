@@ -2,34 +2,22 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const TechItem = ({ skill }) => {
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 20,
-      },
-    },
-  };
-
   return (
-    <motion.div
-      className="bg-white p-2 rounded-xl shadow-sm hover:shadow-xl transition-shadow duration-300"
-      variants={itemVariants}
-      whileHover={{ scale: 1.02 }}
-      transition={{ type: "spring", stiffness: 400, damping: 20 }}
+    <motion.li
+      variants={{
+        hidden: { opacity: 0, x: -8 },
+        visible: { opacity: 1, x: 0, transition: { duration: 0.3 } },
+      }}
+      className="group flex items-center gap-3 rounded-lg px-2 py-2 transition-colors duration-200 hover:bg-paper2"
     >
-      <div className="flex items-center ml-4 gap-4">
-        <i className={`${skill.icon} text-3xl text-dgray`}></i>
-        <div>
-          <h3 className="text-md font-semibold text-dgray">{skill.name}</h3>
-          <p className="text-xsm text-gray-600">{skill.category}</p>
-        </div>
-      </div>
-    </motion.div>
+      <i
+        className={`${skill.icon} w-5 text-center text-lg text-gray-400 transition-colors duration-200 group-hover:text-dgray`}
+        aria-hidden="true"
+      />
+      <span className="text-[15px] text-gray-600 transition-colors duration-200 group-hover:text-dgray">
+        {skill.name}
+      </span>
+    </motion.li>
   );
 };
 

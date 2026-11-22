@@ -1,7 +1,9 @@
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
-import ProjectHeader from "./ui/ProjectHeader";
 import ProjectGrid from "./ui/ProjectGrid";
+import SectionBadge from "../layouts/SectionBadge";
+import SectionSwarm from "../layouts/SectionSwarm";
+
 import useProjectAnimation from "./hooks/useProjectAnimation";
 
 const Project = () => {
@@ -9,52 +11,37 @@ const Project = () => {
   const { scrollTriggerReached, scrollProgress } =
     useProjectAnimation(sectionRef);
 
-  const containerVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 20,
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 20,
-      },
-    },
-  };
-
   return (
-    <section ref={sectionRef} className="pt-10">
+    <section ref={sectionRef}>
       <motion.div
-        className="relative flex flex-col md:flex-row w-full h-full px-6 sm:px-14 py-10 bg-white rounded-[1.5rem] 2xl:rounded-[2rem] justify-center items-center"
-        variants={containerVariants}
-        initial="hidden"
-        animate={scrollTriggerReached ? "visible" : "hidden"}
-        style={{
-          opacity: scrollTriggerReached ? 1 : scrollProgress,
-          transform: `scale(${
-            scrollTriggerReached ? 1 : 0.95 + scrollProgress * 0.05
-          })`,
-        }}
+        className="relative w-full border-t border-line pb-16 pt-10 sm:pt-12"
+        initial={{ opacity: 0, y: 20 }}
+        animate={scrollTriggerReached ? { opacity: 1, y: 0 } : {}}
+        style={
+          scrollTriggerReached
+            ? undefined
+            : { opacity: scrollProgress, transform: `translateY(${12 * (1 - scrollProgress)}px)` }
+        }
+        transition={{ duration: 0.45, ease: "easeOut" }}
       >
-        <ProjectHeader />
-        <motion.div className="w-full" variants={itemVariants}>
+        <SectionBadge index="06" title="Projects" icon="fa-solid fa-folder" place="center" />
+
+        <SectionSwarm />
+
+        <div className="mt-8 max-w-2xl">
+          <h3 className="font-display text-[28px] font-bold leading-[1.15] tracking-tight text-dgray sm:text-[30px]">
+            Things I&apos;ve built
+          </h3>
+          <p className="mt-3 text-[15px] leading-relaxed text-gray-500">
+            Side projects and coursework that shaped how I build — auth systems,
+            AI-backed apps, and Laravel platforms with real data models behind
+            them.
+          </p>
+        </div>
+
+        <div className="mt-9">
           <ProjectGrid />
-        </motion.div>
+        </div>
       </motion.div>
     </section>
   );

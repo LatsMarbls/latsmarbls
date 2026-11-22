@@ -1,138 +1,45 @@
-import React, { useRef } from "react";
+import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import StickyNavbarLogo from "./ui/StickyNavbarLogo";
 import NavLinks from "./ui/NavLinks";
 import useScrollPosition from "./hooks/useScrollPosition";
 import scrollToSection from "./hooks/ScrollHelper";
 
 const StickyNavbar = () => {
-  const placeholderRef = useRef(null);
-  const navbarRef = useRef(null);
-  const {
-    isSticky,
-    scrollDirection,
-    scrollProgress,
-    isVisible,
-    scrollTriggerReached,
-  } = useScrollPosition(placeholderRef);
-
-  // Variants for sticky navbar animations
-  const stickyVariants = {
-    hidden: {
-      y: -100,
-      opacity: 0,
-      scale: 0.9,
-    },
-    visible: {
-      y: 0,
-      opacity: 1,
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 30,
-        mass: 0.8,
-      },
-    },
-    exit: {
-      y: -20,
-      opacity: 0,
-      transition: {
-        duration: 0.2,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  // Animation for the normal navbar
-  const normalVariants = {
-    hidden: { opacity: 0, scale: 0.95, y: 10 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      transition: {
-        duration: 0.3,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  // Scroll-triggered animation
-  const initialEntryVariants = {
-    hidden: {
-      opacity: 0,
-      y: 50,
-      scale: 0.9,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 200,
-        damping: 20,
-        delay: 0.1,
-        when: "beforeChildren",
-        staggerChildren: 0.1,
-      },
-    },
-  };
+  const placeholderRef = React.useRef(null);
+  const { isSticky } = useScrollPosition(placeholderRef);
 
   return (
-    <motion.div
-      className="relative flex justify-center items-center mt-10"
-      initial="hidden"
-      animate={scrollTriggerReached ? "visible" : "hidden"}
-      variants={initialEntryVariants}
-      style={{
-        opacity: Math.min(1, scrollProgress * 4),
-        transform: `translateY(${Math.max(
-          0,
-          (1 - scrollProgress) * 10
-        )}px) scale(${1 + scrollProgress * 0.05})`,
-      }}
-    >
-      <div ref={placeholderRef} className="h-12"></div>
-
-      <AnimatePresence mode="wait">
-        {isSticky ? (
+    <div ref={placeholderRef} className="h-4" aria-hidden={!isSticky}>
+      <AnimatePresence>
+        {isSticky && (
           <motion.div
-            key="sticky-nav"
             id="sticky-navbar"
-            ref={navbarRef}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            variants={stickyVariants}
-            className="fixed flex justify-between items-center top-2 inset-x-0 mx-auto z-10 bg-opacity-90 backdrop-blur-sm
-                      h-12 2xl:h-16 px-4 md:px-8 2xl:px-12 bg-white rounded-[1.5rem] shadow-2xl
-                      w-[87.2%] md:w-[93%] 2xl:w-[93.3%]"
-            style={{
-              boxShadow: `0 10px 25px rgba(0, 0, 0, ${scrollProgress * 0.15})`,
-              transform: `translateY(${scrollDirection === "up" ? 0 : 0}px)`,
-            }}
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -20, opacity: 0 }}
+            transition={{ duration: 0.22, ease: "easeOut" }}
+            className="fixed inset-x-0 top-0 z-40 border-b border-line bg-paper/85 backdrop-blur-md"
           >
-            <StickyNavbarLogo isSticky={true} />
-            <NavLinks scrollToSection={scrollToSection} isMobile={false} />
-            <NavLinks scrollToSection={scrollToSection} isMobile={true} />
-          </motion.div>
-        ) : (
-          <motion.div
-            key="normal-nav"
-            ref={navbarRef}
-            initial="hidden"
-            animate="visible"
-            variants={normalVariants}
-            className="relative w-full flex justify-center items-center h-12 2xl:h-16 px-8 2xl:px-12 bg-white 
-                    rounded-[1.5rem] shadow-lg border"
-          >
-            <StickyNavbarLogo isSticky={false} />
+            <div className="mx-auto flex h-12 w-full max-w-[1600px] items-center justify-between px-6 sm:px-8 lg:px-12 2xl:px-16">
+              <button
+                type="button"
+                onClick={() => scrollToSection("home")}
+                className="flex items-center gap-2"
+                aria-label="Back to top"
+              >
+                <img src="/LogoFilled.svg" alt="" className="h-5 w-5" />
+                <span className="font-display text-[14px] font-bold leading-none tracking-[-0.01em] text-ink">
+                  Lats<span className="text-ink/40">Marbls</span>
+                </span>
+              </button>
+
+              <NavLinks scrollToSection={scrollToSection} />
+              <NavLinks scrollToSection={scrollToSection} isMobile />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.div>
+    </div>
   );
 };
 

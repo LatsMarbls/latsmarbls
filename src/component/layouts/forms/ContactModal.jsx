@@ -94,7 +94,7 @@ const ContactModal = ({ showModal, closeModal, status, onSubmit }) => {
                 type="text"
                 name="name"
                 placeholder="Enter name"
-                className="w-full p-2 2xl:p-3 2xl:text-xl border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-dgray focus:border-transparent"
+                className="w-full p-2 2xl:p-3 2xl:text-xl border border-line rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-dgray focus:border-transparent"
                 required
               />
               <motion.input
@@ -102,14 +102,14 @@ const ContactModal = ({ showModal, closeModal, status, onSubmit }) => {
                 type="email"
                 name="email"
                 placeholder="Enter email"
-                className="w-full p-2 2xl:p-3 2xl:text-xl border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-dgray focus:border-transparent"
+                className="w-full p-2 2xl:p-3 2xl:text-xl border border-line rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-dgray focus:border-transparent"
                 required
               />
               <motion.textarea
                 variants={itemVariants}
                 name="message"
                 placeholder="Your message"
-                className="w-full p-2 2xl:p-3 2xl:text-xl border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-dgray focus:border-transparent"
+                className="w-full p-2 2xl:p-3 2xl:text-xl border border-line rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-dgray focus:border-transparent"
                 rows="4"
                 required
               ></motion.textarea>

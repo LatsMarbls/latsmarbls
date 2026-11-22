@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import ContactInfo from "./ui/ContactInfo";
-import HeroAnimation from "./ui/HeroAnimation";
-import SocialLinks from "./ui/SocialLinks";
 import ContactModal from "../layouts/forms/ContactModal";
+import SectionBadge from "../layouts/SectionBadge";
+import SectionSwarm from "../layouts/SectionSwarm";
+
+import Button from "../layouts/buttons/Button";
 import useAboutAnimation from "./hooks/useAboutAnimation";
 
 const About = () => {
@@ -69,75 +71,76 @@ const About = () => {
     }
   }, [showModal]);
 
-  const containerVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 20,
-        when: "beforeChildren",
-        staggerChildren: 0.1,
-        delayChildren: 0.05,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 20,
-      },
-    },
-  };
-
   return (
-    <motion.div
+    <motion.section
       ref={sectionRef}
-      className="flex justify-center items-center"
+      className="relative w-full border-t border-line pb-16 pt-10 sm:pt-12"
       initial={{ opacity: 0 }}
-      animate={{
-        opacity: scrollTriggerReached ? 1 : 0,
-        transition: { duration: 0.3 },
-      }}
+      animate={{ opacity: scrollTriggerReached ? 1 : scrollProgress }}
+      transition={{ duration: 0.3 }}
     >
-      <motion.section
-        variants={containerVariants}
-        initial="hidden"
-        animate={scrollTriggerReached ? "visible" : "hidden"}
-        className="flex flex-col md:flex-row pt-10 w-full h-full gap-5"
-        style={{
-          opacity: Math.min(1, scrollProgress * 3),
-          transform: `translateY(${Math.max(0, (1 - scrollProgress) * 15)}px) 
-                     scale(${0.95 + scrollProgress * 0.05})`,
-        }}
-      >
-        <motion.div
-          variants={itemVariants}
-          className="relative flex w-full md:w-3/6 h-full bg-white rounded-bl-[1.5rem] rounded-br-[1.5rem] rounded-tr-[1.5rem] flex-grow"
-        >
-          <ContactInfo openModal={openModal} />
-          <SocialLinks />
-        </motion.div>
+      <SectionBadge index="07" title="Contact" icon="fa-regular fa-paper-plane" place="left" />
 
-        <motion.div variants={itemVariants}>
-          <HeroAnimation />
-        </motion.div>
-        <ContactModal
-          showModal={showModal}
-          closeModal={closeModal}
-          status={status}
-          onSubmit={onSubmit}
-        />
-      </motion.section>
-    </motion.div>
+        <SectionSwarm />
+
+      <div className="grid gap-10 md:grid-cols-[1.1fr_0.9fr] md:gap-12 lg:gap-16">
+        <div>
+          <h3 className="max-w-lg font-display text-[28px] font-bold leading-[1.15] tracking-tight text-dgray sm:text-[30px]">
+            Let&apos;s build something
+            <span className="text-gray-300">.</span>
+          </h3>
+          <p className="mt-3 max-w-md text-[15px] leading-relaxed text-gray-500">
+            Open to conversations about backend work, application security and
+            platform reliability. Email is fastest — or send a note straight
+            from here.
+          </p>
+
+          <div className="mt-7 flex flex-wrap items-center gap-4">
+            <Button
+              onClick={openModal}
+              icon="fa-solid fa-paper-plane"
+              text="Send a message"
+            />
+            <a
+              href="mailto:latrellmarable00@gmail.com"
+              className="text-sm font-semibold text-gray-600 underline-offset-4 transition-colors hover:text-dgray hover:underline"
+            >
+              latrellmarable00@gmail.com
+            </a>
+          </div>
+
+          <div className="mt-10 border-t border-line pt-6">
+            <p className="font-mono text-2xs uppercase tracking-[0.18em] text-gray-500">
+              Happy to help with
+            </p>
+            <ul className="mt-4 space-y-2.5">
+              {[
+                "Backend systems in Laravel",
+                "Security review and hardening",
+                "API integration and production troubleshooting",
+              ].map((item) => (
+                <li
+                  key={item}
+                  className="flex items-center gap-3 text-sm text-gray-500"
+                >
+                  <span className="h-1 w-1 rounded-full bg-gray-300" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <ContactInfo />
+      </div>
+
+      <ContactModal
+        showModal={showModal}
+        closeModal={closeModal}
+        status={status}
+        onSubmit={onSubmit}
+      />
+    </motion.section>
   );
 };
 

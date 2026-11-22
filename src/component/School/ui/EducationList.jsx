@@ -4,32 +4,24 @@ import { educationData } from "../data/educationData";
 import EducationItem from "./EducationItem";
 
 const EducationList = () => {
-  const listVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3,
-        delayChildren: 0.4,
-      },
-    },
-  };
-
   return (
-    <div className="w-full">
-      <motion.div
-        className="relative"
-        variants={listVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <div className="w-full mx-auto">
-          {educationData.map((education, index) => (
-            <EducationItem key={index} education={education} />
-          ))}
-        </div>
-      </motion.div>
-    </div>
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={{
+        hidden: { opacity: 0 },
+        visible: {
+          opacity: 1,
+          transition: { staggerChildren: 0.12, delayChildren: 0.05 },
+        },
+      }}
+      className="space-y-4"
+    >
+      {educationData.map((education) => (
+        <EducationItem key={education.period} education={education} />
+      ))}
+    </motion.div>
   );
 };
 

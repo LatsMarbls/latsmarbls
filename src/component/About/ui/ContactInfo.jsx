@@ -1,37 +1,84 @@
 import React from "react";
-import Button from "../../layouts/buttons/Button";
-import AboutHeader from "./AboutHeader";
+import SocialLinks from "./SocialLinks";
 
-const ContactInfo = ({ openModal }) => {
+const details = [
+  {
+    label: "Email",
+    value: "latrellmarable00@gmail.com",
+    href: "mailto:latrellmarable00@gmail.com",
+    icon: "fa-solid fa-envelope",
+  },
+  {
+    label: "Phone",
+    value: "0995 332 4941",
+    href: "tel:+639953324941",
+    icon: "fa-solid fa-phone",
+  },
+  {
+    label: "Based in",
+    value: "Taytay, Rizal \u2014 Philippines",
+    icon: "fa-solid fa-location-dot",
+  },
+];
+
+const ContactInfo = () => {
   return (
-    <>
-      <AboutHeader />
-      <div className="gap-2 flex flex-col px-6 2xl:px-16 py-24 2xl:py-32 sm:px-14 text-dgray 2xl:text-2xl">
-        <h1 className="font-bold text-3xl 2xl:text-5xl">Lets Connect!</h1>
-        <p className="text-gray font-normal pl-30 w-5/6 pt-5">
-          You can contact me through any of my social media profiles or email me
-          directly. I'm always open to new opportunities, and connections, so
-          don't hesitate to get in touch.
+    <div className="rounded-[18px] border border-line bg-paper2 p-5 sm:p-6">
+      <p className="font-mono text-2xs uppercase tracking-[0.18em] text-gray-500">
+        Direct
+      </p>
+
+      <ul className="mt-4 space-y-1">
+        {details.map((detail) => {
+          const content = (
+            <>
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-line bg-white text-gray-500">
+                <i className={`${detail.icon} text-xs`} aria-hidden="true" />
+              </span>
+              <span className="min-w-0">
+                <span className="block font-mono text-2xs uppercase tracking-[0.14em] text-gray-500">
+                  {detail.label}
+                </span>
+                <span className="block truncate text-sm font-medium text-dgray">
+                  {detail.value}
+                </span>
+              </span>
+            </>
+          );
+
+          return (
+            <li key={detail.label}>
+              {detail.href ? (
+                <a
+                  href={detail.href}
+                  className="flex items-center gap-3 rounded-xl px-2 py-2 transition-colors duration-200 hover:bg-white"
+                >
+                  {content}
+                </a>
+              ) : (
+                <div className="flex items-center gap-3 px-2 py-2">
+                  {content}
+                </div>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+
+      <div className="mt-5 border-t border-line pt-4">
+        <p className="mb-3 font-mono text-2xs uppercase tracking-[0.18em] text-gray-500">
+          Elsewhere
         </p>
-        <p className="text-gray font-bold pl-30 w-5/6 pt-5">
-          <i className="fas fa-phone"></i> 0995-332-4941
-        </p>
-        <p className="text-gray font-bold pl-30 w-5/6">
-          <i className="fas fa-envelope"></i> marablelatrell@gmail.com
-        </p>
-        <p className="text-gray font-normal pl-30 w-5/6 pt-5 pb-3">
-          You can email me directly through here:
-        </p>
-        <div className="pl-30 w-5/6">
-          <Button
-            onClick={openModal}
-            icon="fas fa-envelope"
-            text="Contact"
-            buttonClassName="w-1/2 sm:w-42 h-12 2xl:h-14"
-          />
-        </div>
+        <SocialLinks />
       </div>
-    </>
+
+      <div className="mt-5 flex items-center gap-2 rounded-xl border border-line bg-white px-3 py-2.5">
+        <span className="h-1.5 w-1.5 animate-pulseDot rounded-full bg-dgray" />
+        <span className="text-xs font-medium text-gray-600">
+          Open to security &amp; platform work
+        </span>
+      </div>
+    </div>
   );
 };
 

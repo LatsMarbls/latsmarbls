@@ -1,106 +1,86 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const ExperienceItem = ({ experience }) => {
+const ExperienceItem = ({ experience, current }) => {
   return (
     <motion.div
-      className="w-full px-4 sm:px-0"
       variants={{
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0 },
+        hidden: { opacity: 0, y: 16 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
       }}
+      className="grid grid-cols-1 gap-6 md:grid-cols-12"
     >
-      <motion.div
-        className="mt-14 lg:mt-0 lg:mb-4"
-        variants={{
-          hidden: { opacity: 0, y: 20 },
-          visible: { opacity: 1, y: 0, transition: { delay: 0.2 } },
-        }}
-      >
-        <h2 className="text-xl sm:text-2xl 2xl:text-3xl text-dgray font-bold mb-2 sm:mb-3">
-          My Professional Journey
-        </h2>
-        <p className="text-gray text-base sm:text-lg 2xl:text-2xl">
-          Here's a highlight of my professional experience.
+      <div className="md:col-span-4">
+        <div className="rounded-[18px] border border-line bg-paper2 p-5">
+          <div className="flex items-start gap-3">
+            {experience.image ? (
+              <img
+                src={experience.image}
+                alt=""
+                className="h-11 w-11 rounded-xl object-cover"
+              />
+            ) : (
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-dgray font-display text-sm font-bold text-white">
+                {experience.logoText}
+              </div>
+            )}
+            <div className="min-w-0">
+              <h4 className="font-display text-base font-bold leading-snug text-dgray">
+                {experience.company}
+              </h4>
+              <p className="mt-0.5 text-sm text-gray-500">{experience.title}</p>
+            </div>
+          </div>
+
+          <div className="mt-4 flex flex-wrap items-center gap-2">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-2.5 py-1 font-mono text-2xs uppercase tracking-wide text-gray-500">
+              <i className="fa-regular fa-calendar text-2xs" aria-hidden="true" />
+              {experience.period}
+            </span>
+            {current && (
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-2.5 py-1 font-mono text-2xs uppercase tracking-wide text-gray-600">
+                <span className="h-1.5 w-1.5 rounded-full bg-dgray" />
+                Current
+              </span>
+            )}
+          </div>
+
+          {experience.summary && (
+            <p className="mt-4 text-[13px] leading-relaxed text-gray-500">
+              {experience.summary}
+            </p>
+          )}
+
+          {experience.stack?.length > 0 && (
+            <div className="mt-4 flex flex-wrap gap-1.5">
+              {experience.stack.map((tech) => (
+                <span
+                  key={tech}
+                  className="rounded-full border border-line bg-white px-2.5 py-1 text-2xs font-medium text-gray-600"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div className="md:col-span-8">
+        <p className="mb-3 font-mono text-2xs uppercase tracking-[0.16em] text-gray-500">
+          {current ? "What I do" : "What I did"}
         </p>
-      </motion.div>
-
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6">
-        <div className="md:col-span-4 relative">
-          <div className="bg-gray-50 rounded-xl h-full flex flex-col justify-between">
-            <div>
-              <div className="flex items-center mb-1 gap-1">
-                  <img src={experience.image} alt="Neksjob PH" className="rounded-full h-14" />
-                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-dgray">
-                  {experience.company}
-                </h3>
-              </div>
-
-              <div className="flex items-center md:ml-2 gap-2 mb-3 sm:mb-4">
-                <i className="fa-solid fa-code text-dgray text-base sm:text-lg" />
-                <p className="text-base sm:text-lg md:text-xl 2xl:text-2xl text-dgray">
-                  {experience.title}
-                </p>
-              </div>
-
-              <div className="inline-flex items-center gap-2 bg-dgray rounded-full px-3 sm:px-4 py-1.5 sm:py-2 mt-1 sm:mt-2">
-                <i className="fa-regular fa-calendar text-white" />
-                <p className="text-white font-medium text-xs sm:text-sm">
-                  {experience.period}
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-4 sm:mt-6">
-              <div className="grid grid-cols-4 gap-1 sm:gap-2">
-                {[...Array(4)].map((_, index) => (
-                  <div
-                    key={index}
-                    className="h-1 sm:h-2 rounded-full bg-dgray opacity-10"
-                  ></div>
-                ))}
-              </div>
-              <div className="grid grid-cols-6 gap-0.5 sm:gap-1 mt-1 sm:mt-2">
-                {[...Array(6)].map((_, index) => (
-                  <div
-                    key={index}
-                    className="h-0.5 sm:h-1 rounded-full bg-dgray opacity-5"
-                  ></div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="md:col-span-8 flex flex-col">
-          <div>
-            <div className="mb-4 sm:mb-6">
-              <h1 className="text-xl sm:text-xl md:text-1xl 2xl:text-2xl font-semibold text-dgray mb-2 sm:mb-3 flex items-center gap-2">
-                Responsibilities
-              </h1>
-              <ul className="list-disc pl-4 sm:pl-5 space-y-1 sm:space-y-2">
-                {experience.responsibilities.map((responsibility, index) => (
-                  <motion.li
-                    key={index}
-                    className="text-gray text-sm sm:text-base md:text-md 2xl:text-lg"
-                    variants={{
-                      hidden: { opacity: 0, x: -20 },
-                      visible: {
-                        opacity: 1,
-                        x: 0,
-                        transition: {
-                          delay: 0.3 + index * 0.1,
-                        },
-                      },
-                    }}
-                  >
-                    {responsibility}
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
+        <ul className="space-y-2.5">
+          {experience.responsibilities.map((responsibility) => (
+            <li
+              key={responsibility}
+              className="flex gap-3 text-[15px] leading-relaxed text-gray-600"
+            >
+              <span className="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-dgray" />
+              <span>{responsibility}</span>
+            </li>
+          ))}
+        </ul>
       </div>
     </motion.div>
   );

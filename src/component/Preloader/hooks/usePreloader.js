@@ -1,42 +1,45 @@
 import { useState, useEffect } from "react";
 
-const usePreloader = (loadingDuration = 1000, welcomeDuration = 2000) => {
+const STORAGE_KEY = "lm-intro-seen";
+
+const usePreloader = (loadingDuration = 1200, welcomeDuration = 900) => {
   const [loading, setLoading] = useState(true);
   const [showWelcome, setShowWelcome] = useState(false);
   const [complete, setComplete] = useState(false);
 
   useEffect(() => {
-    console.log("Preloader initialized with:", { loadingDuration, welcomeDuration });
+    const seen =
+      typeof window !== "undefined" &&
+      window.sessionStorage.getItem(STORAGE_KEY) === "1";
+
+    if (seen) {
+      setLoading(false);
+      setComplete(true);
+      return;
+    }
 
     const loadingTimer = setTimeout(() => {
-      console.log("Loading complete, showing welcome screen");
       setLoading(false);
       setShowWelcome(true);
     }, loadingDuration);
 
-    // Second transition: welcome screen to content
     const welcomeTimer = setTimeout(() => {
-      console.log("Welcome screen complete, showing main content");
       setShowWelcome(false);
       setComplete(true);
+      window.sessionStorage.setItem(STORAGE_KEY, "1");
     }, loadingDuration + welcomeDuration);
 
     return () => {
       clearTimeout(loadingTimer);
       clearTimeout(welcomeTimer);
-      console.log("Preloader timers cleared");
     };
   }, [loadingDuration, welcomeDuration]);
-
-  useEffect(() => {
-    console.log("Preloader state:", { loading, showWelcome, complete });
-  }, [loading, showWelcome, complete]);
 
   return {
     loading,
     showWelcome,
-    complete
+    complete,
   };
 };
 
-export default usePreloader; 
+export default usePreloader;

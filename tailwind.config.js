@@ -1,42 +1,30 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      fontSize: {
-        xsm: '10px',
-      },
       fontFamily: {
-        sans: ['Poppins', 'sans-serif'],
-        poppins: ['Poppins', 'sans-serif'],
+        sans: ["Inter", "system-ui", "sans-serif"],
+        display: ["Space Grotesk", "Inter", "sans-serif"],
+        mono: ["JetBrains Mono", "ui-monospace", "monospace"],
       },
       colors: {
-        'gray': '#6F6F6F', 
-        'dgray': '#1E1E1E',
-        'highlight': '#3B3B3B',
+        night: "#08090B",
+        panel: "#0D0F12",
+        panel2: "#111417",
+        line: "#1C2026",
+        linesoft: "#14171B",
+        fg: "#E7E9EC",
+        dim: "#8A919C",
+        faint: "#6E7681",
+        accent: "#C9F25D",
+        accentdim: "#8FA93F",
       },
-      keyframes: {
-        wiggle: {
-          "0%, 100%": { transform: "rotate(-3deg)" },
-          "50%": { transform: "rotate(3deg)" },
-        },
-        fadeIn: {
-          "0%": { opacity: "0" },
-          "100%": { opacity: "1" },
-        },
-      },
-      animation: {
-        wiggle: "wiggle 1s ease-in-out infinite",
-        fadeIn: "fadeIn 0.5s ease-in-out",
-      },
-
+      fontSize: { "2xs": "10px", xsm: "11px" },
+      maxWidth: { shell: "1240px" },
+      letterSpacing: { label: "0.18em" },
+      transitionTimingFunction: { out: "cubic-bezier(0.22, 1, 0.36, 1)" },
     },
   },
-  plugins: [
-    require('@tailwindcss/forms'),
-    require('tailwindcss-textshadow'),
-  ],
-}
+  plugins: [require("@tailwindcss/forms")],
+};

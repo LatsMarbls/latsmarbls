@@ -16,12 +16,12 @@ const StickyNavbarLogo = ({ isSticky = false }) => {
       },
     },
     hover: {
-      scale: 1.1,
-      rotate: 5,
+      scale: 1.04,
+      rotate: 0,
       transition: {
         type: "spring",
         stiffness: 300,
-        damping: 10,
+        damping: 18,
       },
     },
   };
@@ -49,25 +49,23 @@ const StickyNavbarLogo = ({ isSticky = false }) => {
       <motion.img
         src="/LogoFilled.svg"
         alt="logo"
-        className="w-6 h-6 2xl:w-9 2xl:h-9"
+        className="h-5 w-5"
         variants={logoVariants}
         initial="hidden"
         animate="visible"
         whileHover="hover"
       />
-      <motion.h1
-        className={`font-bold ${
-          isSticky
-            ? "2xl:text-2xl text-dgray hidden md:block"
-            : "text-dgray 2xl:text-2xl"
+      <motion.span
+        className={`font-display text-[15px] font-bold leading-none tracking-[-0.01em] text-dgray ${
+          isSticky ? "hidden md:block" : ""
         }`}
         variants={textVariants}
         initial="hidden"
         animate="visible"
       >
         Lats
-        <span className="text-gray text-xl 2xl:text-3xl">Marbls</span>
-      </motion.h1>
+        <span className="text-gray-500">Marbls</span>
+      </motion.span>
     </div>
   );
 };
