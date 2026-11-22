@@ -23,34 +23,29 @@ I build web apps in PHP & Laravel, then I argue with them about permissions, tes
 - 🖥️ **I handle the server layer too** — configs, deployments, services, environment fires.
 - ⚛️ **I can do frontend when needed** — React + Tailwind, enough to ship and debug the UI myself.
 
-## My stack
+## Where I live
 
-```
-Backend:    Laravel · PHP · Livewire · MySQL
-Testing:    PHPUnit · Pest
-Security:   AppSec · secure code review · VAPT
-Ops:        Git · GitLab · server admin · deployments
-Frontend:   React.js · Tailwind CSS
-Tools:      Postman · Playwright
-```
+**Backend is home.** Most days you'll find me in:
 
-## Things I've built
+- **Laravel & PHP** — building modules, APIs and the glue that holds everything together.
+- **MySQL** — designing schemas, relationships and the occasional index that saves a query from death.
+- **Livewire** — when I want reactive UI without leaving Laravel land.
 
-- **Login Auth** — Email verification + 6-digit OTP password reset on the MERN stack.
-- **NextJob** — Laravel + Livewire job board with listings and applications.
-- **Cabi** — Taxi-hailing backend and site, Laravel + Livewire.
-- **Story Weaver** — React app that generates short stories with Google's Generative AI API.
-- **Art Curator** — React-based art browsing interface.
-- **SaaS Landing Page** — Launch page with React, Framer Motion and Tailwind.
+## My quality toolkit
 
-## Education
+The stuff I reach for when I want to sleep soundly after a deploy:
 
-- **BS Computer Science** — Cum Laude, GWA 1.4
-- **ICT** — Average 89%
+- **PHPUnit & Pest** — tests written with the feature, not after the bug report.
+- **Git & GitLab** — version control, CI/CD and the occasional force-push regret.
+- **Postman & Playwright** — API checks, end-to-end sanity tests.
+- **Application security & VAPT** — reviewing input handling, permissions and data exposure.
 
-## About this repo
+## The frontend I can tolerate
 
-This is the source for my portfolio site at [latsmarbls.vercel.app](https://latsmarbls.vercel.app). It's a React + Vite site with a randomized design system — every visitor gets a different prepared layout, cached so repeats feel familiar. Want a new one? Add `?design=shuffle` to the URL.
+I don't live here, but I visit often enough to be dangerous:
+
+- **React.js** — for interfaces that need more than Blade templates.
+- **Tailwind CSS** — for making things look decent without writing CSS all day.
 
 ## Let's talk
 
