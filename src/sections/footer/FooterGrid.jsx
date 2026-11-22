@@ -26,7 +26,9 @@ export default function FooterGrid({ profile, nav, socials, version }) {
                   className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider text-faint transition-colors hover:text-dim"
                 >
                   {item.label}
-                  <ArrowUpRight className="h-3 w-3" />
+                  <span className="font-mono text-[10px] text-faint/70" aria-hidden="true">
+                    ↓
+                  </span>
                 </a>
               ))}
             </nav>

@@ -23,7 +23,7 @@ export default function ContactCentered({ profile, socials }) {
 
         <p className="mt-6 max-w-md text-sm leading-relaxed text-dim">
           Backend work, application security, platform reliability — or a Laravel system that needs a
-          second pair of eyes. Email is fastest; I usually reply the same day.
+          second pair of eyes. I usually reply the same day.
         </p>
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">

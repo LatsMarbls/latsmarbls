@@ -2,6 +2,19 @@
 
 All notable changes to this portfolio are documented in this file.
 
+## [2.1.4] — 2026-11-22
+
+### Changed
+- Design selection is deterministic. Every visitor now gets the reviewed combination (`nav:classic`, `hero:split`, `skills:grouped`, `practice:list`, `experience:rows`, `projects:feature`, `contact:split`, `footer:minimal`) instead of a random, visitor-cached one.
+- Variant exploration is opt-in via `?design=section:index` or the positional `?design=0,0,0,0,0,5,0,3` form, used for review only.
+
+### Fixed
+- Practice item numbers are section-scoped (`03.01` … `03.08`) instead of a running `01`–`08` that collided with section numbering.
+- Contact no longer issues three cues for one action: dropped "Email is fastest", and the address is plain text rather than a second competing CTA.
+- Footer sitemap anchors use `↓` instead of the `↗` external-link arrow, which implied a new tab.
+- `No demo` project action is visually disabled (dashed, dimmed, `aria-disabled`, explanatory title) instead of styled like an active `Live` button.
+- Skills default variant is the two-column `grouped` layout, removing the empty grid cell left by the three-column `ledger` variant at eight groups.
+
 ## [2.1.3] — 2026-11-22
 
 ### Added

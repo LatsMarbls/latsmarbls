@@ -105,7 +105,7 @@ export default function ProjectsFeature({ projects, meta }) {
                     Live
                   </a>
                 ) : (
-                  <span className="inline-flex w-[86px] items-center justify-center border border-linesoft px-2.5 py-1.5 font-mono text-[10px] uppercase tracking-wider text-faint/60">
+                <span className="inline-flex w-[86px] items-center justify-center border border-dashed border-line/70 px-2.5 py-1.5 font-mono text-[10px] uppercase tracking-wider text-faint/45" aria-disabled="true" title="No public demo for this project">
                     No demo
                   </span>
                 )}

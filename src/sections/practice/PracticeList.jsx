@@ -15,7 +15,7 @@ export default function PracticeList({ practices, meta }) {
           >
             <div className="flex gap-4">
               <span className="mt-1 font-mono text-[10px] text-faint">
-                {String(i + 1).padStart(2, "0")}
+                {meta.index}.{String(i + 1).padStart(2, "0")}
               </span>
               <div>
                 <h3 className="text-lg leading-snug tracking-tight text-fg">{item.title}</h3>

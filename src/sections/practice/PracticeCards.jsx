@@ -13,7 +13,7 @@ export default function PracticeCards({ practices, meta }) {
             delay={Math.min(i, 3) * 50}
             className="flex flex-col border border-line bg-panel/30 p-5"
           >
-            <span className="font-mono text-[10px] text-faint">{String(i + 1).padStart(2, "0")}</span>
+            <span className="font-mono text-[10px] text-faint">{meta.index}.{String(i + 1).padStart(2, "0")}</span>
             <h3 className="mt-3 text-lg leading-snug tracking-tight text-fg">{item.title}</h3>
             <p className="mt-2 flex-1 text-sm leading-relaxed text-dim">{item.body}</p>
             <p className="mt-4 border-t border-linesoft pt-3 text-[11px] leading-relaxed text-faint">

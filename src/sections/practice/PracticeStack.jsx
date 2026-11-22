@@ -15,7 +15,7 @@ export default function PracticeStack({ practices, meta }) {
           >
             <div className="flex items-baseline gap-4">
               <span className="font-mono text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-none text-line">
-                {String(i + 1).padStart(2, "0")}
+                {meta.index}.{String(i + 1).padStart(2, "0")}
               </span>
               <div className="flex-1">
                 <h3 className="text-lg leading-snug tracking-tight text-fg">{item.title}</h3>

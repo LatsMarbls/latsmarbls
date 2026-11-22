@@ -25,7 +25,7 @@ export default function ContactSplit({ profile, socials }) {
 
             <p className="mt-6 max-w-md text-sm leading-relaxed text-dim">
               Backend work, application security, platform reliability — or a Laravel system that
-              needs a second pair of eyes. Email is fastest; I usually reply the same day.
+              needs a second pair of eyes. I usually reply the same day.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -36,12 +36,7 @@ export default function ContactSplit({ profile, socials }) {
                 <Mail className="h-3.5 w-3.5" />
                 Email me
               </a>
-              <a
-                href={`mailto:${profile.email}`}
-                className="link-underline font-mono text-xs text-dim hover:text-fg"
-              >
-                {profile.email}
-              </a>
+              <span className="font-mono text-xs text-faint">{profile.email}</span>
             </div>
 
             <p className="mt-8 flex items-center gap-2 font-mono text-[11px] text-faint">
