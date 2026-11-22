@@ -1,4 +1,6 @@
 import { useCallback, useState } from "react";
+import { getDesignLabels, getDesignSelection } from "./designs/selection";
+import { DesignProvider } from "./designs/DesignContext";
 import Contact from "./sections/Contact";
 import Experience from "./sections/Experience";
 import Footer from "./sections/Footer";
@@ -58,6 +60,9 @@ export default function App() {
   const [build, setBuild] = useState(forceBuild);
   const [swarmReady, setSwarmReady] = useState(false);
 
+  const [selection] = useState(() => getDesignSelection());
+  const designLabels = getDesignLabels(selection);
+
   const handleReveal = useCallback(() => {
     setStarted(true);
     setBuild(true);
@@ -68,12 +73,17 @@ export default function App() {
 
   return (
     <>
-      {started && <Page />}
+      {started && (
+        <DesignProvider initialSelection={selection}>
+          <Page />
+        </DesignProvider>
+      )}
       {build && (
         <SwarmRebuild onDone={handleBuildDone} onReady={handleSwarmReady} />
       )}
       {!introDone && (
         <Intro
+          designLabels={designLabels}
           hold={!swarmReady}
           onReveal={handleReveal}
           onDone={handleIntroDone}

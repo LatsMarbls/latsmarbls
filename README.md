@@ -6,7 +6,7 @@
 
 Personal portfolio — from a prompt-style loading screen to a cursor swarm that draws the page in front of you.
 
-[![v2.0.0](https://img.shields.io/badge/version-v2.0.0-0D99FF?style=flat-square)](https://github.com/LatsMarbls/latsmarbls/releases/tag/v2.0.0)
+[![v2.1.0](https://img.shields.io/badge/version-v2.1.0-0D99FF?style=flat-square)](https://github.com/LatsMarbls/latsmarbls/releases/tag/v2.1.0)
 [![Live](https://img.shields.io/badge/live-latsmarbls.vercel.app-08090B?style=flat-square&labelColor=1e1e1e)](https://latsmarbls.vercel.app)
 [![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react&logoColor=white)](https://react.dev)
 [![Vite](https://img.shields.io/badge/Vite-6-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev)
@@ -37,6 +37,7 @@ The whole thing is interactive — you can skip the build at any time, and reduc
 
 - Prompt-style intro loading screen
 - Cursor swarm rebuild / tour overlay
+- Randomized design variants for every section, cached per visitor
 - Responsive dark UI
 - Single `<h1>`, focus outlines, screen-reader friendly markup
 - Reduced-motion safe
@@ -61,6 +62,22 @@ src/
   ui/                # Intro, SwarmRebuild, Icons, Reveal, Section
 ```
 
+## Randomized designs
+
+Each visit picks a random prepared design for the navbar, hero, every section and the footer. The selection is cached in `localStorage` under `lm-design-v2.1.0`, so repeat visits show the same layout until the cache is cleared.
+
+Force a new selection by adding `?design=shuffle` to the URL:
+
+```text
+https://latsmarbls.vercel.app/?design=shuffle
+```
+
+For testing a specific combination, use section overrides:
+
+```text
+https://latsmarbls.vercel.app/?design=nav:1,hero:2,skills:0,practice:1,experience:2,projects:0,contact:1,footer:2
+```
+
 ## Getting started
 
 ```bash
@@ -80,7 +97,8 @@ npm run lint       # run ESLint
 
 | Version | Status | Release | Source |
 |---|---|---|---|
-| v2.0.0 | Current / live | [v2.0.0](https://github.com/LatsMarbls/latsmarbls/releases/tag/v2.0.0) | `main` |
+| v2.1.0 | Current / live | [v2.1.0](https://github.com/LatsMarbls/latsmarbls/releases/tag/v2.1.0) | `main` |
+| v2.0.0 | Previous | [v2.0.0](https://github.com/LatsMarbls/latsmarbls/releases/tag/v2.0.0) | `main` history |
 | v1.0.0 | Legacy | [v1.0.0](https://github.com/LatsMarbls/latsmarbls/releases/tag/v1.0.0) | [`v1`](https://github.com/LatsMarbls/latsmarbls/tree/v1.0.0) |
 
 See [CHANGELOG.md](./CHANGELOG.md) for the full history.

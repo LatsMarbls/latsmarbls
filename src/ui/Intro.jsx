@@ -4,23 +4,35 @@ import { motion } from "framer-motion";
 
 const COMMAND = "build portfolio --for latrell";
 
-const rows = [
-  { label: "content", value: "6 sections · 18 skills" },
-  { label: "type", value: "44 / 16 / 14 / 11" },
-  { label: "layout", value: "12-column shell · 1240px" },
-  { label: "motion", value: "stagger 60ms · reduced-motion safe" },
-  { label: "audit", value: "1 h1 · contrast pass" },
-];
+function useRows(designLabels) {
+  return useMemo(() => {
+    const base = [
+      { label: "content", value: "6 sections · 18 skills" },
+      { label: "type", value: "44 / 16 / 14 / 11" },
+      { label: "layout", value: "12-column shell · 1240px" },
+      { label: "motion", value: "stagger 60ms · reduced-motion safe" },
+      { label: "audit", value: "1 h1 · contrast pass" },
+    ];
+    if (designLabels) {
+      const value = ["nav", "hero", "skills", "practice", "experience", "projects", "contact", "footer"]
+        .map((section) => `${section}:${designLabels[section]}`)
+        .join(" · ");
+      base.push({ label: "design", value });
+    }
+    return base;
+  }, [designLabels]);
+}
 
 const STORAGE_KEY = "lm-build-intro";
 
-export default function Intro({ onReveal, onDone, hold = false }) {
+export default function Intro({ onReveal, onDone, hold = false, designLabels }) {
   const [typed, setTyped] = useState("");
   const [shown, setShown] = useState(0);
   const [progress, setProgress] = useState(0);
   const [leaving, setLeaving] = useState(false);
   const timers = useRef([]);
   const finished = useRef(false);
+  const rows = useRows(designLabels);
 
   const speed = useMemo(() => {
     const value = Number(
@@ -97,7 +109,7 @@ export default function Intro({ onReveal, onDone, hold = false }) {
       clearTimers();
       window.removeEventListener("keydown", onKey);
     };
-  }, [reduced, onDone, onReveal, speed]);
+  }, [reduced, onDone, onReveal, speed, rows]);
 
   useEffect(() => {
     if (!leaving) return;
@@ -150,12 +162,14 @@ export default function Intro({ onReveal, onDone, hold = false }) {
                   initial={{ opacity: 0, y: 4 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.16 }}
-                  className="flex items-baseline gap-3"
+                  className="flex flex-wrap items-baseline gap-x-3 gap-y-1"
                 >
                   <span className="w-[62px] shrink-0 text-faint">
                     {row.label}
                   </span>
-                  <span className="text-dim">{row.value}</span>
+                  <span className="max-w-[calc(100%-74px)] break-words text-dim">
+                    {row.value}
+                  </span>
                   <span className="ml-auto text-accent">✓</span>
                 </motion.div>
               ))}
@@ -187,4 +201,5 @@ Intro.propTypes = {
   onReveal: PropTypes.func.isRequired,
   onDone: PropTypes.func.isRequired,
   hold: PropTypes.bool,
+  designLabels: PropTypes.object,
 };

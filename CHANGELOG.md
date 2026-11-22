@@ -2,6 +2,20 @@
 
 All notable changes to this portfolio are documented in this file.
 
+## [2.1.0] — 2026-11-22
+
+### Added
+- Randomized design variants for Nav, Hero, Skills, Practice, Experience, Projects, Contact and Footer (3 variants each).
+- `localStorage` cache (`lm-design-v2.1.0`) keeps the same design selection across visits.
+- `?design=shuffle` query parameter forces a new random selection.
+- `?design=nav:1,hero:2,...` override for testing a specific variant combination.
+- `DesignContext` / `useDesign(section)` hook for variant selection.
+- Selected design names shown in the intro readout.
+
+### Changed
+- Section files are now thin wrappers that import presentational variants from `src/sections/<section>/`.
+- All variants share the same content and anchor IDs, keeping swarm capture compatible.
+
 ## [2.0.0] — 2026-11-22
 
 ### Added
