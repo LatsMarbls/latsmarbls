@@ -38,7 +38,7 @@ export default function HeroCentered({ profile, meta, responseArtifact, resumeHr
             className="focus-ring group inline-flex items-center gap-2 bg-accent px-4 py-2.5 font-mono text-[11px] uppercase tracking-wider text-night transition-colors hover:bg-accentdim"
           >
             <Mail className="h-3.5 w-3.5" />
-            Email me
+            Say hello
           </a>
           <a
             href={resumeHref}

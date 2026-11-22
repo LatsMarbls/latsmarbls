@@ -2,6 +2,13 @@
 
 All notable changes to this portfolio are documented in this file.
 
+## [2.1.1] — 2026-11-22
+
+### Fixed
+- Removed duplicated "Let's build something useful." heading and "Email me" CTA from the `FooterCta` variant so it no longer repeats the Contact section.
+- Changed the Hero email CTA from "Email me" to "Say hello" to avoid duplicating the Contact section CTA.
+- Removed the location and stack sentence from `HeroSplit` to avoid repeating the Contact "Based in" panel and the Core stack stat.
+
 ## [2.1.0] — 2026-11-22
 
 ### Added

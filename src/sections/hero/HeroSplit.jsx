@@ -40,8 +40,7 @@ export default function HeroSplit({ profile, meta, responseArtifact, resumeHref 
             </figure>
 
             <p className="mt-4 max-w-xl font-mono text-xs leading-relaxed text-faint">
-              Currently at <span className="text-dim">{profile.company}</span> — Laravel, MySQL,
-              Pest. Based in {profile.location}.
+              Currently at <span className="text-dim">{profile.company}</span>
             </p>
 
             <div data-build="actions" className="mt-9 flex flex-wrap items-center gap-3">
@@ -50,7 +49,7 @@ export default function HeroSplit({ profile, meta, responseArtifact, resumeHref 
                 className="focus-ring group inline-flex items-center gap-2 bg-accent px-4 py-2.5 font-mono text-[11px] uppercase tracking-wider text-night transition-colors hover:bg-accentdim"
               >
                 <Mail className="h-3.5 w-3.5" />
-                Email me
+                Say hello
               </a>
               <a
                 href={resumeHref}

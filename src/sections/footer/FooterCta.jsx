@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { ArrowUpRight, Mail } from "../../ui/Icons";
+import { ArrowUpRight } from "../../ui/Icons";
 import { navItemShape, profileShape, versionShape } from "../propTypes";
 
 export default function FooterCta({ profile, nav, version }) {
@@ -8,18 +8,12 @@ export default function FooterCta({ profile, nav, version }) {
       <div className="shell py-12 md:py-16">
         <div className="grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-7">
-            <h2 className="text-[clamp(2rem,5vw,4rem)] font-semibold leading-[1] tracking-[-0.035em] text-fg">
-              Let&apos;s build
+            <p className="label">Built to be rebuilt</p>
+            <h2 className="mt-4 text-[clamp(1.75rem,4vw,3rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-fg">
+              A portfolio drawn by cursors,
               <br />
-              <span className="text-dim">something useful.</span>
+              <span className="text-dim">kept consistent by design.</span>
             </h2>
-            <a
-              href={`mailto:${profile.email}`}
-              className="focus-ring group mt-8 inline-flex items-center gap-2 bg-accent px-5 py-3 font-mono text-[11px] uppercase tracking-wider text-night transition-colors hover:bg-accentdim"
-            >
-              <Mail className="h-3.5 w-3.5" />
-              Email me
-            </a>
           </div>
 
           <div className="grid gap-8 sm:grid-cols-2 lg:col-span-5">
