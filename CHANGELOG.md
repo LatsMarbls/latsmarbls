@@ -2,6 +2,11 @@
 
 All notable changes to this portfolio are documented in this file.
 
+## [2.1.2] — 2026-11-22
+
+### Added
+- After the cursor-swarm tour finishes, the page automatically scrolls back to the top (smooth, reduced-motion safe).
+
 ## [2.1.1] — 2026-11-22
 
 ### Fixed

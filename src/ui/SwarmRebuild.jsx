@@ -47,6 +47,10 @@ export default function SwarmRebuild({ onDone, onReady }) {
         // ignore teardown errors
       }
       onDone();
+      // The tour scrolls to the footer; bring the visitor back to the top
+      // once the rebuild is finished.
+      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" });
     };
 
     if (!force && window.sessionStorage.getItem(SESSION_KEY) === "1") {
